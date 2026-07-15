@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "ACE Engineering — Power Solutions",
     description:
       "Closing the gap between demand and generation. Fast-track power for data centres, utilities and industry.",
-    images: ["/hero-city.webp"]
+    images: ["/img/hero-plant.webp"]
   }
 };
 
