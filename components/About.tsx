@@ -77,7 +77,7 @@ export default function About() {
               >
                 <Image
                   src="/img/about-tower.webp"
-                  alt="High-rise district at night — the loads ACE Engineering keeps powered"
+                  alt="High-voltage substation at dusk — grid infrastructure ACE Engineering delivers and operates"
                   fill
                   sizes="(min-width: 1024px) 34rem, 28rem"
                   className="object-cover"
@@ -110,7 +110,7 @@ export default function About() {
 
         <div className="mt-20 grid gap-6 md:grid-cols-3">
           {principles.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.1} y={18}>
+            <Reveal key={p.title} delay={i * 0.1} y={18} className="h-full">
               <div className="h-full border-l-2 border-amp bg-cloud p-7">
                 <h3 className="display text-2xl text-deep">{p.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate">{p.body}</p>

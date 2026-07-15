@@ -9,8 +9,6 @@ import {
   useMotionValue,
   useSpring
 } from "framer-motion";
-import { waLink } from "../lib/site.config";
-
 /** Circuit paths shared by the drawn lines and the travelling energy pulses. */
 const WIRES = [
   { d: "M-40 420 H360 L420 360 H820 L880 420 H1480", o: 1, dur: 7 },
@@ -127,8 +125,8 @@ export default function Hero() {
         <motion.div style={reduce ? undefined : { scale: imgScale, y: imgY }} className="absolute inset-0">
           <motion.div style={reduce ? undefined : { x: bgMx, y: bgMy }} className="absolute -inset-4">
             <Image
-              src="/hero-city.webp"
-              alt="City skyline at night connected by an illuminated power grid"
+              src="/img/hero-plant.webp"
+              alt="Combined-cycle power plant at dusk"
               fill
               priority
               className="object-cover object-center"
@@ -199,8 +197,8 @@ export default function Hero() {
           <motion.div style={reduce ? undefined : { x: chipMx, y: chipMy }} className="absolute inset-0">
             <Chip
               src="/img/chip-a.webp"
-              label="GT-40 · Mobile block"
-              value="40 MW"
+              label="TX-04 · Power block"
+              value="40 MVA"
               status="Online"
               floatDur="7s"
               className="right-[7%] top-[20%]"
@@ -276,12 +274,10 @@ export default function Hero() {
               Explore capabilities
             </a>
             <a
-              href={waLink()}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               className="spec border border-paper/30 px-7 py-4 text-paper transition-colors hover:border-amp hover:text-amp"
             >
-              WhatsApp
+              Speak to an engineer
             </a>
           </motion.div>
 

@@ -33,7 +33,7 @@ export default function Sectors() {
 
         <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {sectors.map((s, i) => (
-            <Reveal key={s.name} delay={i * 0.06} y={18}>
+            <Reveal key={s.name} delay={i * 0.06} y={18} className="h-full">
               {s.feature ? (
                 <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-amp p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                   <Image
