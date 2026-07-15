@@ -49,17 +49,18 @@ export default function About() {
           <Reveal>
             <p className="spec text-amp">Company</p>
             <h2 className="display mt-4 text-5xl text-deep md:text-6xl">
-              Engineering-led. Delivery-obsessed.
+              Engineering-led. Delivery-driven.
             </h2>
             <p className="mt-6 text-slate">
               ACE Engineering is a power solutions company serving markets where
               energy demand has outgrown supply. We design, deliver and operate
               generation assets — generators, turbines and complete power plants —
-              for clients who measure downtime in real money.
+              for organisations where continuity of supply is mission-critical.
             </p>
             <p className="mt-4 text-slate">
-              Senior engineers lead every engagement, from the first feasibility
-              conversation to long-term operations.
+              Senior engineers lead every engagement, from initial feasibility
+              through commissioning and long-term operations, across the United
+              Arab Emirates, Egypt and the wider region.
             </p>
           </Reveal>
 
