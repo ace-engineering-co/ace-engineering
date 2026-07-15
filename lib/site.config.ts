@@ -9,10 +9,10 @@ export const site = {
   // WhatsApp number in international format, digits only (no +, no spaces)
   whatsapp: "971500000000",
   whatsappMessage: "Hello ACE Engineering — I'd like to discuss a power requirement.",
-  email: "info@ace-engineering.com", // TODO: replace with real inbox
-  affiliateEmail: "partners@ace-engineering.com", // TODO: replace
+  email: "info@ace-engineering.co", // TODO: confirm inbox exists
+  affiliateEmail: "affiliate@ace-engineering.co", // TODO: confirm inbox exists
   phone: "+971 0 000 0000", // TODO: replace
-  location: "Ras Al Khaimah, United Arab Emirates", // TODO: confirm
+  location: "United Arab Emirates · Egypt",
   linkedin: "#" // TODO: add when available
 };
 

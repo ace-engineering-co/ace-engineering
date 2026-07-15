@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Reveal from "./Reveal";
 
 const sectors = [
@@ -13,10 +14,10 @@ const sectors = [
   { name: "Events & critical facilities", detail: "Redundant power where failure isn't an option" }
 ];
 
-/** Formal white section. */
+/** Formal light section; the high-demand card carries imagery. */
 export default function Sectors() {
   return (
-    <section id="sectors" className="relative z-10 bg-cloud py-24 lg:py-32">
+    <section id="sectors" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-cloud py-24 lg:py-32">
       <div className="mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
           <p className="spec text-amp">Where we work</p>
@@ -33,17 +34,34 @@ export default function Sectors() {
         <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {sectors.map((s, i) => (
             <Reveal key={s.name} delay={i * 0.06} y={18}>
-              <div
-                className={`flex h-full flex-col justify-between border bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
-                  s.feature ? "border-amp" : "border-hairline hover:border-amp/50"
-                }`}
-              >
-                <div>
-                  {s.feature && <p className="spec mb-3 text-amp">High demand</p>}
-                  <h3 className="display text-2xl text-deep">{s.name}</h3>
+              {s.feature ? (
+                <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-amp p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  <Image
+                    src="/img/sector-dc.webp"
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 24rem, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
+                  <div className="relative">
+                    <p className="spec mb-3 flex items-center gap-2 text-amp">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amp/60" />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amp" />
+                      </span>
+                      High demand
+                    </p>
+                    <h3 className="display text-2xl text-paper">{s.name}</h3>
+                  </div>
+                  <p className="relative mt-4 text-sm text-haze">{s.detail}</p>
                 </div>
-                <p className="mt-4 text-sm text-slate">{s.detail}</p>
-              </div>
+              ) : (
+                <div className="flex h-full flex-col justify-between border border-hairline bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-amp/50 hover:shadow-lg">
+                  <h3 className="display text-2xl text-deep">{s.name}</h3>
+                  <p className="mt-4 text-sm text-slate">{s.detail}</p>
+                </div>
+              )}
             </Reveal>
           ))}
         </div>
