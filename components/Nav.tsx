@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { waLink } from "../lib/site.config";
 
 const links = [
   { href: "#services", label: "Services" },
@@ -48,12 +47,10 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href={waLink()}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
             className="spec border border-amp px-4 py-2 text-amp transition-colors hover:bg-amp hover:text-ink"
           >
-            Talk to us
+            Request a consultation
           </a>
         </nav>
 

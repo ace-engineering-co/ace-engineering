@@ -11,7 +11,8 @@ export const site = {
   whatsappMessage: "Hello ACE Engineering — I'd like to discuss a power requirement.",
   email: "info@ace-engineering.co", // TODO: confirm inbox exists
   affiliateEmail: "affiliate@ace-engineering.co", // TODO: confirm inbox exists
-  phone: "+971 0 000 0000", // TODO: replace
+  phone: "+971 4 000 0000", // TODO: replace with the real UAE number
+  phoneHref: "tel:+97140000000", // TODO: keep in sync with `phone`
   location: "United Arab Emirates · Egypt",
   linkedin: "#" // TODO: add when available
 };

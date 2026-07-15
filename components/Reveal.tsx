@@ -48,8 +48,11 @@ export default function Reveal({
     return <div className={className}>{children}</div>;
   }
 
+  // Mirror h-full onto the wrappers so grid children can stretch to equal height
+  const fill = className?.split(" ").includes("h-full") ? "h-full" : undefined;
+
   return (
-    <motion.div ref={ref} style={{ opacity: opacityOut, y: yOut }}>
+    <motion.div ref={ref} style={{ opacity: opacityOut, y: yOut }} className={fill}>
       <motion.div style={{ opacity: opacityIn, y: yIn }} className={className}>
         {children}
       </motion.div>

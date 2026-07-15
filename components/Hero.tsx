@@ -9,8 +9,6 @@ import {
   useMotionValue,
   useSpring
 } from "framer-motion";
-import { waLink } from "../lib/site.config";
-
 /** Circuit paths shared by the drawn lines and the travelling energy pulses. */
 const WIRES = [
   { d: "M-40 420 H360 L420 360 H820 L880 420 H1480", o: 1, dur: 7 },
@@ -276,12 +274,10 @@ export default function Hero() {
               Explore capabilities
             </a>
             <a
-              href={waLink()}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               className="spec border border-paper/30 px-7 py-4 text-paper transition-colors hover:border-amp hover:text-amp"
             >
-              WhatsApp
+              Speak to an engineer
             </a>
           </motion.div>
 

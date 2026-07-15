@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import flags from "react-phone-number-input/flags";
+import "react-phone-number-input/style.css";
 import Reveal from "./Reveal";
-import { site, waLink } from "../lib/site.config";
-import { countries, flag } from "../lib/countries";
+import { site } from "../lib/site.config";
 
 const sectors = [
   "Data centres",
@@ -21,8 +23,7 @@ type Form = {
   title: string;
   company: string;
   email: string;
-  dial: string;
-  phone: string;
+  phone: string; // E.164 from react-phone-number-input
   sector: string;
   load: string;
   location: string;
@@ -34,7 +35,6 @@ const initial: Form = {
   title: "",
   company: "",
   email: "",
-  dial: "+971",
   phone: "",
   sector: "",
   load: "",
@@ -48,8 +48,7 @@ const validators: Partial<Record<keyof Form, (v: string) => string>> = {
   company: (v) => (v.trim().length >= 2 ? "" : "Please enter your company name."),
   email: (v) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? "" : "Please enter a valid business email.",
-  phone: (v) =>
-    /^[0-9\s-]{6,14}$/.test(v.trim()) ? "" : "Please enter a valid mobile number (digits only).",
+  phone: (v) => (v && isValidPhoneNumber(v) ? "" : "Please enter a valid mobile number."),
   sector: (v) => (v ? "" : "Please select a sector."),
   message: (v) => (v.trim().length >= 20 ? "" : "Please describe the requirement (min. 20 characters).")
 };
@@ -84,7 +83,7 @@ export default function Contact() {
       `Job title: ${form.title || "—"}`,
       `Company: ${form.company}`,
       `Email: ${form.email}`,
-      `Mobile: ${form.dial} ${form.phone}`,
+      `Mobile: ${form.phone}`,
       `Sector: ${form.sector}`,
       `Estimated load: ${form.load || "—"}`,
       `Project location: ${form.location || "—"}`,
@@ -126,15 +125,13 @@ export default function Contact() {
 
           <dl className="mt-10 space-y-6">
             <div>
-              <dt className="spec text-slate/70">WhatsApp Business</dt>
+              <dt className="spec text-slate/70">Telephone (UAE)</dt>
               <dd className="mt-1">
                 <a
-                  href={waLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={site.phoneHref}
                   className="text-lg text-deep transition-colors hover:text-amp"
                 >
-                  Message us directly →
+                  {site.phone}
                 </a>
               </dd>
             </div>
@@ -188,25 +185,24 @@ export default function Contact() {
 
               <div className="sm:col-span-2">
                 <label htmlFor="c-phone" className={label}>Mobile *</label>
-                <div className="flex gap-2">
-                  <select
-                    aria-label="Country dial code"
-                    name="dial"
-                    className={`${base} w-36 shrink-0 border-hairline focus:border-amp`}
-                    value={form.dial}
-                    onChange={set("dial")}
-                  >
-                    {countries.map((c) => (
-                      <option key={c.iso} value={c.dial}>
-                        {flag(c.iso)} {c.iso} {c.dial}
-                      </option>
-                    ))}
-                  </select>
-                  <input id="c-phone" name="phone" type="tel" required inputMode="numeric" autoComplete="tel-national"
-                    placeholder="5X XXX XXXX"
-                    aria-invalid={!!errorFor("phone")}
-                    className={field("phone")} value={form.phone} onChange={set("phone")} onBlur={blur("phone")} />
-                </div>
+                <PhoneInput
+                  international
+                  defaultCountry="AE"
+                  flags={flags}
+                  countryCallingCodeEditable={false}
+                  value={form.phone || undefined}
+                  onChange={(v) => setForm((f) => ({ ...f, phone: v || "" }))}
+                  onBlur={blur("phone")}
+                  numberInputProps={{
+                    id: "c-phone",
+                    name: "phone",
+                    required: true,
+                    autoComplete: "tel",
+                    "aria-invalid": !!errorFor("phone"),
+                    className: field("phone")
+                  }}
+                  className={errorFor("phone") ? "phone-invalid" : undefined}
+                />
                 <Err k="phone" />
               </div>
 
