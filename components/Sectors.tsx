@@ -17,7 +17,7 @@ const sectors = [
 /** Formal light section; the high-demand card carries imagery. */
 export default function Sectors() {
   return (
-    <section id="sectors" className="relative z-10 bg-cloud py-24 lg:py-32">
+    <section id="sectors" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-cloud py-24 lg:py-32">
       <div className="mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
           <p className="spec text-amp">Where we work</p>

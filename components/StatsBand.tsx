@@ -58,7 +58,7 @@ export default function StatsBand() {
   const y = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
 
   return (
-    <section ref={ref} className="relative z-10 overflow-hidden bg-ink">
+    <section ref={ref} className="relative z-10 -mt-10 overflow-hidden rounded-t-[2.5rem] bg-ink">
       {/* Parallax backdrop */}
       <motion.div
         style={reduce ? undefined : { y: bgY }}

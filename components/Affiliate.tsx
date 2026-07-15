@@ -20,7 +20,7 @@ export default function Affiliate() {
     "w-full border border-linedark bg-ink/60 px-4 py-3 text-sm text-paper placeholder-steel/60 outline-none transition-colors focus:border-amp";
 
   return (
-    <section id="affiliate" className="relative z-10 overflow-hidden bg-navy py-24 lg:py-32">
+    <section id="affiliate" className="relative z-10 -mt-10 overflow-hidden rounded-t-[2.5rem] bg-navy py-24 lg:py-32">
       {/* Faint city backdrop + amp glow */}
       <Image
         src="/img/affiliate-bg.webp"

@@ -19,7 +19,7 @@ export default function Contact() {
     "w-full border border-hairline bg-white px-4 py-3 text-sm text-deep placeholder-slate/50 outline-none transition-colors focus:border-amp";
 
   return (
-    <section id="contact" className="relative z-10 bg-white py-24 lg:py-32">
+    <section id="contact" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-white py-24 lg:py-32">
       <div className="mx-auto grid max-w-wrap gap-14 px-5 lg:grid-cols-2 lg:px-8">
         <Reveal>
           <p className="spec text-amp">Contact</p>

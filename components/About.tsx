@@ -1,6 +1,14 @@
 "use client";
+import { useRef } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionTemplate
+} from "framer-motion";
 import Reveal from "./Reveal";
 
 /* TODO: replace with the client's About Us document when received. */
@@ -19,9 +27,20 @@ const principles = [
   }
 ];
 
-/** Light section anchored by a cinematic image panel with a wipe reveal. */
+/** Light section anchored by a cinematic image panel with a scrubbed wipe. */
 export default function About() {
   const reduce = useReducedMotion();
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // Wipe + settle are scrubbed by scroll, not triggered once
+  const { scrollYProgress } = useScroll({
+    target: panelRef,
+    offset: ["start 100%", "start 38%"]
+  });
+  const p = useSpring(scrollYProgress, { stiffness: 100, damping: 26, mass: 0.5 });
+  const inset = useTransform(p, [0, 1], [100, 0]);
+  const clipPath = useMotionTemplate`inset(${inset}% 0 0 0)`;
+  const imgScale = useTransform(p, [0, 1], [1.18, 1]);
 
   return (
     <section id="about" className="relative z-10 overflow-hidden bg-white py-24 lg:py-32">
@@ -45,20 +64,14 @@ export default function About() {
           </Reveal>
 
           {/* Image panel: offset amp frame + wipe reveal + floating readout */}
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+          <div ref={panelRef} className="relative mx-auto w-full max-w-md lg:max-w-none">
             <div aria-hidden className="absolute -right-4 -top-4 h-full w-full border border-amp/40" />
             <motion.div
-              initial={reduce ? false : { clipPath: "inset(100% 0 0 0)" }}
-              whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-              viewport={{ once: true, margin: "-120px" }}
-              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+              style={reduce ? undefined : { clipPath }}
               className="relative aspect-[3/4] overflow-hidden lg:aspect-[4/5]"
             >
               <motion.div
-                initial={reduce ? false : { scale: 1.18 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true, margin: "-120px" }}
-                transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+                style={reduce ? undefined : { scale: imgScale }}
                 className="absolute inset-0"
               >
                 <Image

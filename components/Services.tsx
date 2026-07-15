@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 import Reveal from "./Reveal";
 
 const services = [
@@ -101,10 +101,12 @@ export default function Services() {
   }, []);
 
   const { scrollYProgress } = useScroll({ target: sectionRef });
-  const x = useTransform(scrollYProgress, [0.12, 0.95], [0, -overflow]);
+  // Spring lag makes the track glide and settle instead of tracking 1:1
+  const xRaw = useTransform(scrollYProgress, [0.12, 0.95], [0, -overflow]);
+  const x = useSpring(xRaw, { stiffness: 90, damping: 28, mass: 0.7 });
 
   return (
-    <section id="services" className="relative z-10 bg-white">
+    <section id="services" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-white">
       {/* Desktop: pinned horizontal scroll */}
       <div ref={sectionRef} className="relative hidden h-[260vh] md:block">
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
