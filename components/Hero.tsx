@@ -197,8 +197,8 @@ export default function Hero() {
           <motion.div style={reduce ? undefined : { x: chipMx, y: chipMy }} className="absolute inset-0">
             <Chip
               src="/img/chip-a.webp"
-              label="GT-40 · Mobile block"
-              value="40 MW"
+              label="TX-04 · Power block"
+              value="40 MVA"
               status="Online"
               floatDur="7s"
               className="right-[7%] top-[20%]"
