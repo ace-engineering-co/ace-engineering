@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import Reveal from "./Reveal";
 import { site } from "../lib/site.config";
 
@@ -19,8 +20,24 @@ export default function Affiliate() {
     "w-full border border-linedark bg-ink/60 px-4 py-3 text-sm text-paper placeholder-steel/60 outline-none transition-colors focus:border-amp";
 
   return (
-    <section id="affiliate" className="relative z-10 bg-navy py-24 lg:py-32">
-      <div className="mx-auto grid max-w-wrap gap-14 px-5 lg:grid-cols-2 lg:px-8">
+    <section id="affiliate" className="relative z-10 overflow-hidden bg-navy py-24 lg:py-32">
+      {/* Faint city backdrop + amp glow */}
+      <Image
+        src="/img/affiliate-bg.webp"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover opacity-20"
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/80 to-navy" aria-hidden />
+      <div
+        aria-hidden
+        className="absolute -right-32 -top-32 h-96 w-96 rounded-full opacity-25 mix-blend-screen"
+        style={{ background: "radial-gradient(closest-side, #F58220, transparent 70%)", filter: "blur(40px)" }}
+      />
+      <div className="grain" />
+      <div className="relative mx-auto grid max-w-wrap gap-14 px-5 lg:grid-cols-2 lg:px-8">
         <Reveal>
           <p className="spec text-amp">Affiliate program</p>
           <h2 className="display mt-4 text-5xl text-paper md:text-6xl">

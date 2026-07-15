@@ -34,6 +34,44 @@ body {
   text-transform: uppercase;
 }
 
+/* Film grain overlay — apply to a relative parent's decorative layer */
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Outlined ghost display type (marquee, index numbers) */
+.ghost-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(244, 247, 252, 0.25);
+}
+
+/* Kinetic marquee — track holds two copies of the content */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+/* Slow vertical drift for floating HUD chips */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Aurora energy glow behind the hero headline */
+@keyframes aurora {
+  0%, 100% { transform: translate(-6%, -4%) scale(1) rotate(0deg); opacity: 0.55; }
+  50% { transform: translate(5%, 6%) scale(1.18) rotate(8deg); opacity: 0.85; }
+}
+.animate-aurora {
+  animation: aurora 16s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
