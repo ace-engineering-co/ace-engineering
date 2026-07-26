@@ -7,7 +7,8 @@ import About from "../components/About";
 import HowWeWork from "../components/HowWeWork";
 import Affiliate from "../components/Affiliate";
 import Contact from "../components/Contact";
-import Footer, { ConsultationFab } from "../components/Footer";
+import Footer from "../components/Footer";
+import ConsultationFab from "../components/ConsultationFab";
 
 export default function Home() {
   return (

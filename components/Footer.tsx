@@ -1,18 +1,5 @@
 import { site, waLink } from "../lib/site.config";
 
-/** Floating consultation CTA — vertical tab pinned to the right edge, mid-height. */
-export function ConsultationFab() {
-  return (
-    <a
-      href="#contact"
-      className="spec fixed right-0 top-1/2 z-50 -translate-y-1/2 bg-amp px-3.5 py-6 font-medium text-ink transition-transform [writing-mode:vertical-rl] hover:-translate-x-1"
-      style={{ animation: "glowpulse 2.6s ease-in-out infinite" }}
-    >
-      Request a consultation
-    </a>
-  );
-}
-
 export function WhatsAppFab() {
   return (
     <a
