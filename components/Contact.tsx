@@ -254,9 +254,6 @@ export default function Contact() {
             >
               Submit enquiry
             </button>
-            <p className="spec mt-4 text-center text-slate/60">
-              Reviewed by a senior engineer · Response within one business day
-            </p>
           </form>
         </Reveal>
       </div>
