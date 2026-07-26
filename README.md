@@ -1,4 +1,4 @@
-# ACE Engineering — Power Solutions
+# ACE Engineering — Integrated Infrastructure Solutions
 
 Single-page credibility site. Next.js 15 (App Router) · Tailwind CSS · Framer Motion. Fully static — deploys to Vercel free tier.
 
@@ -17,20 +17,24 @@ Open http://localhost:3000
 2. vercel.com → New Project → import the repo → Deploy (zero config needed)
 3. Add the custom domain in Vercel → Settings → Domains when ready
 
-## Before the client meeting — the edit checklist
+## Remaining edit checklist
 
-Everything that needs real data is in **one file**: `lib/site.config.ts`
+Contact details live in **one file**: `lib/site.config.ts`
 
 - [ ] WhatsApp number (digits only, international format)
 - [ ] Contact email + affiliate/partners email
-- [ ] Phone and office location
+- [ ] Phone, office location and LinkedIn URL
 
-Then, when their content document arrives:
+Site copy comes from the client's wording document (integrated). Sections, in
+page order: `Hero`, `Services` (5 solutions + capability tags), `StatsBand`
+(Why-ACE pillars + marquee), `Sectors` (4 industries), `About`, `HowWeWork`
+(5-step process), `Affiliate` (5-step programme), `Contact`.
 
-- [ ] `components/Hero.tsx` — replace the 4 stat figures (marked `TODO`)
-- [ ] `components/Services.tsx` — swap the 6 service descriptions
-- [ ] `components/About.tsx` — replace company copy (marked `TODO`)
-- [ ] `public/hero-city.webp` — swap if they want a different hero image
+Imagery still to swap:
+
+- [ ] `components/Services.tsx` — Offshore infrastructure card needs a
+      marine/offshore photo (marked `TODO`); no suitable image exists yet
+- [ ] `public/img/hero-plant.webp` — swap if the client wants a different hero
 
 ## Forms
 

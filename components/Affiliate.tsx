@@ -4,16 +4,24 @@ import { site } from "../lib/site.config";
 
 const steps = [
   {
-    title: "Introduce",
-    body: "Register an opportunity — a data centre expansion, a utility capacity shortfall, a major industrial development."
+    title: "Register your interest",
+    body: "Submit your details, your market focus and the type of opportunities you can introduce."
   },
   {
-    title: "We qualify & engage",
-    body: "Our commercial team validates the requirement and leads the engagement under a documented referral agreement."
+    title: "Receive your affiliate reference",
+    body: "Once approved, you receive a unique referral code identifying opportunities introduced by you."
   },
   {
-    title: "You are remunerated",
-    body: "Commission is paid on closed contract value under transparent, contracted terms."
+    title: "Introduce qualified opportunities",
+    body: "Use your reference when introducing suppliers, OEMs, asset owners, developers or buyers."
+  },
+  {
+    title: "Opportunity review",
+    body: "We confirm whether the opportunity fits our solutions, markets and commercial model."
+  },
+  {
+    title: "Earn commission",
+    body: "Completed transactions may earn an agreed commission based on the final commercial terms."
   }
 ];
 
@@ -39,14 +47,16 @@ export default function Affiliate() {
 
       <div className="relative mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
-          <p className="spec text-amp">Partner programme</p>
+          <p className="spec text-amp">Affiliate partner programme</p>
           <h2 className="display mt-4 max-w-3xl text-4xl text-paper md:text-5xl">
-            Strategic referral partnerships.
+            Become an affiliate partner.
           </h2>
           <p className="mt-6 max-w-3xl text-haze">
-            ACE Engineering operates a structured referral programme for consultants,
-            advisers and industry partners. Qualified introductions are commissioned
-            on closed contract value under transparent, contracted terms.
+            ACE Engineering works with a trusted network of industry professionals,
+            suppliers, OEMs, asset owners and commercial partners. If you can
+            introduce qualified opportunities within your network, you can partner
+            with us — and earn an agreed commission when a referral leads to a
+            completed transaction.
           </p>
           <p className="mt-5 max-w-3xl text-haze">
             To register as a referral partner, contact{" "}
@@ -67,7 +77,7 @@ export default function Affiliate() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-8 border-t border-linedark/50 pt-10 md:grid-cols-3">
+        <div className="mt-14 grid gap-8 border-t border-linedark/50 pt-10 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.08} y={24}>
               <div className="flex items-start gap-4">
@@ -80,6 +90,13 @@ export default function Affiliate() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal>
+          <p className="mt-12 max-w-3xl text-xs leading-relaxed text-steel">
+            All referrals, commissions and commercial arrangements are subject to
+            prior approval, conflict checks and agreed affiliate terms.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

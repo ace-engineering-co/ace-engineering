@@ -31,7 +31,7 @@ export default function Footer() {
           </span>
         </div>
         <p className="spec text-steel">
-          © {new Date().getFullYear()} {site.name} · Power Solutions
+          © {new Date().getFullYear()} {site.name} · {site.tagline}
         </p>
       </div>
     </footer>

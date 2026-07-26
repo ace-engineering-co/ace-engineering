@@ -1,54 +1,40 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { motion, useInView, useReducedMotion, useScroll, useTransform, animate } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
-function Counter({ to, suffix }: { to: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const reduce = useReducedMotion();
-  const [val, setVal] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    if (reduce) return setVal(to);
-    const controls = animate(0, to, {
-      duration: 2,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setVal(Math.round(v))
-    });
-    return () => controls.stop();
-  }, [inView, to, reduce]);
-
-  return (
-    <span ref={ref} className="display text-5xl text-paper md:text-6xl">
-      {val}
-      <span className="text-amp">{suffix}</span>
-    </span>
-  );
-}
-
-/* TODO: replace with the client's real figures before any client meeting */
-const stats = [
-  { to: 500, suffix: "+", label: "MW deployable capacity" },
-  { to: 12, suffix: "", label: "Countries served" },
-  { to: 45, suffix: "d", label: "Fast-track to first power" },
-  { to: 24, suffix: "/7", label: "Operations & maintenance" }
+const pillars = [
+  {
+    title: "Industry experience",
+    body: "Extensive experience across power generation, industrial infrastructure, offshore assets and project development."
+  },
+  {
+    title: "Technology-neutral",
+    body: "Solutions selected on project requirements, commercial objectives and delivery capability — never a single vendor."
+  },
+  {
+    title: "Partner ecosystem",
+    body: "Access to manufacturers, fabricators, engineering specialists, asset owners and delivery partners."
+  },
+  {
+    title: "Cross-border capability",
+    body: "Supporting projects across Africa, the Middle East, Europe and North America."
+  }
 ];
 
 const ticker = [
-  "Generators",
-  "Turbines",
-  "Turnkey plants",
-  "Data centre power",
-  "O&M 24/7",
-  "Cross-border energy"
+  "Power generation",
+  "Electrical infrastructure",
+  "Packaged solutions",
+  "Offshore assets",
+  "Project development",
+  "Cross-border delivery"
 ];
 
 /**
  * Dark interlude: kinetic ghost-type marquee over a slow-parallax city
- * backdrop, then the counters. The backdrop moves opposite to scroll so the
- * band reads as a window cut into the page.
+ * backdrop, then the four "Why ACE" pillars. The backdrop moves opposite to
+ * scroll so the band reads as a window cut into the page.
  */
 export default function StatsBand() {
   const ref = useRef<HTMLDivElement>(null);
@@ -86,10 +72,10 @@ export default function StatsBand() {
 
       <motion.div
         style={reduce ? undefined : { y }}
-        className="relative mx-auto grid max-w-wrap grid-cols-2 gap-x-8 gap-y-12 px-5 py-24 md:grid-cols-4 lg:px-8"
+        className="relative mx-auto grid max-w-wrap grid-cols-1 gap-x-8 gap-y-12 px-5 py-24 sm:grid-cols-2 md:grid-cols-4 lg:px-8"
       >
-        {stats.map((s, i) => (
-          <div key={s.label} className="border-l border-linedark/60 pl-5">
+        {pillars.map((p, i) => (
+          <div key={p.title} className="border-l border-linedark/60 pl-5">
             <motion.span
               initial={reduce ? false : { scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -97,8 +83,9 @@ export default function StatsBand() {
               transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="mb-4 block h-px w-12 origin-left bg-amp"
             />
-            <Counter to={s.to} suffix={s.suffix} />
-            <p className="spec mt-3 text-steel">{s.label}</p>
+            <p className="spec text-amp">W/{String(i + 1).padStart(2, "0")}</p>
+            <h3 className="display mt-3 text-3xl text-paper">{p.title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-steel">{p.body}</p>
           </div>
         ))}
       </motion.div>

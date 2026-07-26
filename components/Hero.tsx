@@ -197,16 +197,16 @@ export default function Hero() {
           <motion.div style={reduce ? undefined : { x: chipMx, y: chipMy }} className="absolute inset-0">
             <Chip
               src="/img/chip-a.webp"
-              label="TX-04 · Power block"
-              value="40 MVA"
+              label="Genset module · G-04"
+              value="2.0 MW"
               status="Online"
               floatDur="7s"
               className="right-[7%] top-[20%]"
             />
             <Chip
               src="/img/chip-b.webp"
-              label="Grid node 07"
-              value="132 kV"
+              label="Switchgear · MV line-up"
+              value="11 kV"
               status="Synced"
               floatDur="9s"
               className="right-[24%] top-[47%] xl:right-[26%]"
@@ -227,11 +227,11 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="spec mb-6 text-amp"
           >
-            ACE Engineering — Power Solutions
+            ACE Engineering — Infrastructure Solutions
           </motion.p>
 
           <h1 className="display max-w-4xl text-6xl text-paper sm:text-7xl lg:text-8xl">
-            {["Closing the gap", "between demand", "and generation."].map((line, i) => (
+            {["Integrated", "infrastructure", "solutions."].map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <motion.span
                   className="block"
@@ -239,13 +239,7 @@ export default function Hero() {
                   animate={{ y: 0, filter: "blur(0px)" }}
                   transition={{ duration: 0.9, delay: 0.2 + i * 0.13, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  {i === 2 ? (
-                    <>
-                      and <span className="text-amp">generation.</span>
-                    </>
-                  ) : (
-                    line
-                  )}
+                  {i === 2 ? <span className="text-amp">{line}</span> : line}
                 </motion.span>
               </span>
             ))}
@@ -257,8 +251,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.75 }}
             className="mt-6 max-w-xl text-lg text-haze"
           >
-            Generators, turbines and turnkey power plants — engineered, delivered
-            and operated where the grid can&apos;t keep up.
+            For critical industries — data centers, oil &amp; gas, mining and
+            industrial — we turn complex requirements into reliable, practical
+            and commercially viable solutions.
           </motion.p>
 
           <motion.div
@@ -271,13 +266,13 @@ export default function Hero() {
               href="#services"
               className="spec bg-amp px-7 py-4 font-medium text-ink transition-colors hover:bg-paper"
             >
-              Explore capabilities
+              Explore our solutions
             </a>
             <a
               href="#contact"
               className="spec border border-paper/30 px-7 py-4 text-paper transition-colors hover:border-amp hover:text-amp"
             >
-              Speak to an engineer
+              Discuss your project
             </a>
           </motion.div>
 

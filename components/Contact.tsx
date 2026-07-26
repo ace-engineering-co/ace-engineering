@@ -7,12 +7,10 @@ import Reveal from "./Reveal";
 import { site } from "../lib/site.config";
 
 const sectors = [
-  "Data centres",
-  "Utilities & IPPs",
+  "Data centers",
   "Oil & gas",
-  "Manufacturing",
-  "Construction & mining",
-  "Events & critical facilities",
+  "Mining",
+  "Industrial & manufacturing",
   "Other"
 ];
 
@@ -85,7 +83,7 @@ export default function Contact() {
       `Email: ${form.email}`,
       `Mobile: ${form.phone}`,
       `Sector: ${form.sector}`,
-      `Estimated load: ${form.load || "—"}`,
+      `Power requirement: ${form.load || "—"}`,
       `Project location: ${form.location || "—"}`,
       "",
       "Requirement:",
@@ -116,11 +114,13 @@ export default function Contact() {
         <Reveal>
           <p className="spec text-amp">Contact</p>
           <h2 className="display mt-4 text-5xl text-deep md:text-6xl">
-            Discuss your power requirement.
+            Discuss your project.
           </h2>
           <p className="mt-6 max-w-md text-slate">
-            Submit an enquiry and a senior engineer will respond within one
-            business day. All information is treated as commercially confidential.
+            Developing a new infrastructure project, sourcing critical equipment,
+            evaluating offshore assets or structuring a complex opportunity — we
+            can help you identify the right solution pathway. All information is
+            treated as commercially confidential.
           </p>
 
           <dl className="mt-10 space-y-6">
@@ -220,7 +220,7 @@ export default function Contact() {
                 <Err k="sector" />
               </div>
               <div>
-                <label htmlFor="c-load" className={label}>Estimated load</label>
+                <label htmlFor="c-load" className={label}>Power requirement (if any)</label>
                 <select id="c-load" name="load"
                   className={`${field("load")} ${form.load ? "" : "text-slate/50"}`}
                   value={form.load} onChange={set("load")}>
@@ -240,7 +240,7 @@ export default function Contact() {
               <div className="sm:col-span-2">
                 <label htmlFor="c-message" className={label}>Requirement *</label>
                 <textarea id="c-message" name="message" required rows={5}
-                  placeholder="Scope, load profile, timeline and any constraints…"
+                  placeholder="Scope, requirements, timeline and any constraints…"
                   aria-invalid={!!errorFor("message")}
                   className={`${field("message")} resize-none`}
                   value={form.message} onChange={set("message")} onBlur={blur("message")} />

@@ -5,10 +5,10 @@
  */
 export const site = {
   name: "ACE Engineering",
-  tagline: "Power Solutions",
+  tagline: "Infrastructure Solutions",
   // WhatsApp number in international format, digits only (no +, no spaces)
   whatsapp: "971500000000",
-  whatsappMessage: "Hello ACE Engineering — I'd like to discuss a power requirement.",
+  whatsappMessage: "Hello ACE Engineering — I'd like to discuss an infrastructure project.",
   email: "info@ace-engineering.co", // TODO: confirm inbox exists
   affiliateEmail: "affiliate@ace-engineering.co", // TODO: confirm inbox exists
   phone: "+971 4 000 0000", // TODO: replace with the real UAE number
