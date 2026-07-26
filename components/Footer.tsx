@@ -1,12 +1,13 @@
 import { site, waLink } from "../lib/site.config";
 
-/** Floating consultation CTA — persistent across the page, clear of the WhatsApp FAB. */
+/** Floating consultation CTA — persistent across the page. */
 export function ConsultationFab() {
   return (
     <a
       href="#contact"
-      className="spec fixed bottom-8 right-24 z-50 bg-amp px-5 py-3.5 font-medium text-ink shadow-[0_8px_30px_rgba(127,166,217,0.35)] transition-colors hover:bg-paper"
+      className="spec fixed bottom-8 right-6 z-50 bg-amp px-5 py-3.5 font-medium text-ink shadow-[0_8px_30px_rgba(127,166,217,0.35)] transition-transform hover:scale-110"
     >
+      <span className="absolute inset-0 -z-10 animate-ping bg-amp/40 [animation-duration:2.5s]" />
       Request a consultation
     </a>
   );
