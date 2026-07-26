@@ -2,9 +2,10 @@
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#services", label: "Services" },
-  { href: "#sectors", label: "Sectors" },
+  { href: "#services", label: "Solutions" },
+  { href: "#sectors", label: "Industries" },
   { href: "#about", label: "Company" },
+  { href: "#process", label: "How we work" },
   { href: "#affiliate", label: "Partners" },
   { href: "#contact", label: "Contact" }
 ];
@@ -27,13 +28,13 @@ export default function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-wrap items-center justify-between px-5 py-4 lg:px-8">
-        <a href="#top" className="flex items-center gap-3">
-          <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden>
-            <rect x="3" y="3" width="10" height="10" fill="none" stroke="#F58220" strokeWidth="2" transform="rotate(45 8 8)" />
-          </svg>
-          <span className="display text-xl tracking-wide text-paper">
-            ACE <span className="text-amp">Engineering</span>
-          </span>
+        <a href="#top" className="flex items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/logo-primary-horizontal-white.svg"
+            alt="ACE Engineering"
+            className="h-9 w-auto"
+          />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -50,7 +51,7 @@ export default function Nav() {
             href="#contact"
             className="spec border border-amp px-4 py-2 text-amp transition-colors hover:bg-amp hover:text-ink"
           >
-            Request a consultation
+            Discuss your project
           </a>
         </nav>
 

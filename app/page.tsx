@@ -4,6 +4,7 @@ import Services from "../components/Services";
 import StatsBand from "../components/StatsBand";
 import Sectors from "../components/Sectors";
 import About from "../components/About";
+import HowWeWork from "../components/HowWeWork";
 import Affiliate from "../components/Affiliate";
 import Contact from "../components/Contact";
 import Footer, { WhatsAppFab } from "../components/Footer";
@@ -17,6 +18,7 @@ export default function Home() {
       <StatsBand />
       <Sectors />
       <About />
+      <HowWeWork />
       <Affiliate />
       <Contact />
       <Footer />

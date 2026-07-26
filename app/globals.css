@@ -12,7 +12,7 @@ body {
 }
 
 ::selection {
-  background: rgba(245, 130, 32, 0.9);
+  background: rgba(127, 166, 217, 0.9);
   color: #0b1526;
 }
 
@@ -48,7 +48,7 @@ body {
   transition: border-color 0.2s;
 }
 .PhoneInput:focus-within .PhoneInputCountry {
-  border-color: #f58220;
+  border-color: #7fa6d9;
 }
 .phone-invalid .PhoneInputCountry {
   border-color: #f87171;

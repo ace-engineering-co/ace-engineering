@@ -11,20 +11,27 @@ import {
 } from "framer-motion";
 import Reveal from "./Reveal";
 
-/* TODO: replace with the client's About Us document when received. */
 const principles = [
   {
-    title: "Speed with discipline",
-    body: "Fast-track delivery backed by rigorous engineering — mobilisation measured in weeks, built to run for years."
+    title: "Beyond equipment sourcing",
+    body: "We structure solution pathways, not supply lists — combining technology, engineering, fabrication and commercial terms into one coherent package."
   },
   {
-    title: "One accountable partner",
-    body: "From feasibility to first power to long-term O&M, a single team owns the outcome end to end."
+    title: "Stakeholder alignment",
+    body: "We bring manufacturers, fabricators, engineering specialists and asset owners to the same table, aligned on delivery."
   },
   {
-    title: "Proven leadership",
-    body: "A founding team with decades of combined delivery experience across power generation, energy infrastructure and industrial projects in the region and beyond."
+    title: "Concept through delivery",
+    body: "Support across the full path — from opportunity assessment and solution packaging to execution and delivery coordination."
   }
+];
+
+const experience = [
+  "Power generation",
+  "Electrical systems",
+  "Fabrication & modular solutions",
+  "Oil & gas",
+  "International business development"
 ];
 
 /** Light section anchored by a cinematic image panel with a scrubbed wipe. */
@@ -49,18 +56,18 @@ export default function About() {
           <Reveal>
             <p className="spec text-amp">Company</p>
             <h2 className="display mt-4 text-5xl text-deep md:text-6xl">
-              Engineering-led. Delivery-driven.
+              Practical infrastructure solutions.
             </h2>
             <p className="mt-6 text-slate">
-              ACE Engineering is a power solutions company serving markets where
-              energy demand has outgrown supply. We design, deliver and operate
-              generation assets — generators, turbines and complete power plants —
-              for organisations where continuity of supply is mission-critical.
+              ACE Engineering is an infrastructure solutions company supporting
+              clients across energy, industrial, offshore and mission-critical
+              sectors.
             </p>
             <p className="mt-4 text-slate">
-              Senior engineers lead every engagement, from initial feasibility
-              through commissioning and long-term operations, across the United
-              Arab Emirates, Egypt and the wider region.
+              We combine technical understanding, market access, partner networks
+              and commercial discipline to help clients identify, package and
+              deliver practical infrastructure solutions — from concept through
+              delivery.
             </p>
           </Reveal>
 
@@ -87,23 +94,29 @@ export default function About() {
             </motion.div>
 
             <div
-              aria-hidden
               className="absolute -left-5 bottom-10 border border-linedark/60 bg-ink/85 px-5 py-4 backdrop-blur-md"
               style={{ animation: "floaty 8s ease-in-out infinite" }}
             >
-              <p className="spec text-[0.6rem] text-steel">Demand curve · 24h</p>
-              {/* mini load sparkline */}
-              <svg width="120" height="30" viewBox="0 0 120 30" className="mt-2">
-                <polyline
-                  points="0,24 15,22 30,25 45,14 60,17 75,8 90,12 105,4 120,7"
-                  fill="none"
-                  stroke="#F58220"
-                  strokeWidth="1.6"
-                />
-              </svg>
-              <p className="display mt-1 text-lg text-paper">
-                +38% <span className="text-amp">YoY</span>
-              </p>
+              <p className="spec text-[0.6rem] text-steel">Built on industry experience</p>
+              <ul className="mt-3 space-y-1.5">
+                {experience.map((e) => (
+                  <li key={e} className="flex items-center gap-2 text-xs text-haze">
+                    <svg width="8" height="8" viewBox="0 0 16 16" aria-hidden>
+                      <rect
+                        x="3"
+                        y="3"
+                        width="10"
+                        height="10"
+                        fill="none"
+                        stroke="#7FA6D9"
+                        strokeWidth="2"
+                        transform="rotate(45 8 8)"
+                      />
+                    </svg>
+                    {e}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

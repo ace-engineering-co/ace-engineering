@@ -3,15 +3,22 @@ import Reveal from "./Reveal";
 
 const sectors = [
   {
-    name: "Data centres",
-    detail: "Prime, bridge and backup power for AI-era compute loads",
+    name: "Data centers",
+    detail: "Reliable and scalable infrastructure solutions that support uptime, resilience and rapid deployment",
     feature: true
   },
-  { name: "Utilities & IPPs", detail: "Grid support, peak shaving, emergency capacity" },
-  { name: "Oil & gas", detail: "Remote-site and offshore power packages" },
-  { name: "Manufacturing", detail: "Continuous-process and heavy industrial loads" },
-  { name: "Construction & mining", detail: "Temporary site power at any scale" },
-  { name: "Events & critical facilities", detail: "Redundant power where failure isn't an option" }
+  {
+    name: "Oil & gas",
+    detail: "Upstream, midstream and downstream operations supported through integrated energy, fabrication and offshore solutions"
+  },
+  {
+    name: "Mining",
+    detail: "Dependable infrastructure solutions for remote and demanding operating environments"
+  },
+  {
+    name: "Industrial & manufacturing",
+    detail: "Industrial growth supported through reliable power, electrical infrastructure and packaged equipment solutions"
+  }
 ];
 
 /** Formal light section; the high-demand card carries imagery. */
@@ -20,22 +27,22 @@ export default function Sectors() {
     <section id="sectors" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-cloud py-24 lg:py-32">
       <div className="mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
-          <p className="spec text-amp">Where we work</p>
+          <p className="spec text-amp">Industries</p>
           <h2 className="display mt-4 max-w-3xl text-5xl text-deep md:text-6xl">
-            Built for the loads that can&apos;t wait.
+            Built for critical industries.
           </h2>
           <p className="mt-6 max-w-2xl text-slate">
-            Global electricity demand is growing faster than grids can expand — and
-            nowhere faster than compute. We deploy generation where the shortfall
-            is, for the sectors that carry it.
+            Data centers, oil &amp; gas, mining and industrial operations — the
+            sectors where reliability, resilience and delivery certainty decide
+            outcomes.
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-4 md:grid-cols-2">
           {sectors.map((s, i) => (
             <Reveal key={s.name} delay={i * 0.06} y={18} className="h-full">
               {s.feature ? (
-                <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-amp p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div className="group relative flex h-full min-h-[18rem] flex-col justify-between overflow-hidden border border-amp p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                   <Image
                     src="/img/sector-dc.webp"
                     alt=""

@@ -5,9 +5,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        /* dark scenes */
-        ink: "#070D1A",
-        navy: "#0C1830",
+        /* dark scenes — anchored to the brand navy #05162D */
+        ink: "#040E1C",
+        navy: "#05162D",
         linedark: "#1B2C4E",
         steel: "#94A3BC",
         haze: "#C7D2E4",
@@ -16,10 +16,10 @@ const config: Config = {
         cloud: "#F6F7F9",
         hairline: "#E4E8EF",
         slate: "#35404F",
-        deep: "#0B1526",
-        /* accent */
-        amp: "#F58220",
-        ampdeep: "#D96A0B"
+        deep: "#05162D",
+        /* accent — steel/ice blue drawn from the navy brand mark */
+        amp: "#7FA6D9",
+        ampdeep: "#54749E"
       },
       fontFamily: {
         display: ["'Barlow Condensed'", "sans-serif"],

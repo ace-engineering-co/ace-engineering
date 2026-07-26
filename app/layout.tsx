@@ -12,13 +12,13 @@ import SmoothScroll from "../components/SmoothScroll";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ace-engineering.vercel.app"),
-  title: "ACE Engineering — Power Solutions",
+  title: "ACE Engineering — Integrated Infrastructure Solutions",
   description:
-    "Fast-track power generation for data centres, utilities and industry. Generators, turbines and turnkey power plants — deployed where the grid can't reach.",
+    "Integrated infrastructure solutions for critical industries. Development, packaging and delivery of energy, industrial and offshore infrastructure for data centers, oil & gas, mining and industrial markets.",
   openGraph: {
-    title: "ACE Engineering — Power Solutions",
+    title: "ACE Engineering — Integrated Infrastructure Solutions",
     description:
-      "Closing the gap between demand and generation. Fast-track power for data centres, utilities and industry.",
+      "Integrated infrastructure solutions for critical industries — power generation, electrical, packaged, offshore and project development.",
     images: ["/img/hero-plant.webp"]
   }
 };
