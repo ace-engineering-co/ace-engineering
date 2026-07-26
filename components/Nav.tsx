@@ -36,7 +36,7 @@ export default function Nav() {
           />
         </a>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
@@ -50,12 +50,6 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="spec hidden border border-amp px-4 py-2 text-amp transition-colors hover:bg-amp hover:text-ink xl:inline-block"
-          >
-            Request a consultation
-          </a>
         </nav>
 
         <button
@@ -85,13 +79,6 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="spec mt-3 inline-block border border-amp px-4 py-2 text-amp"
-          >
-            Request a consultation
-          </a>
         </nav>
       )}
     </header>

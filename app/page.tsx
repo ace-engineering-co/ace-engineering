@@ -7,7 +7,7 @@ import About from "../components/About";
 import HowWeWork from "../components/HowWeWork";
 import Affiliate from "../components/Affiliate";
 import Contact from "../components/Contact";
-import Footer, { WhatsAppFab } from "../components/Footer";
+import Footer, { WhatsAppFab, ConsultationFab } from "../components/Footer";
 
 export default function Home() {
   return (
@@ -23,6 +23,7 @@ export default function Home() {
       <Contact />
       <Footer />
       <WhatsAppFab />
+      <ConsultationFab />
     </main>
   );
 }
