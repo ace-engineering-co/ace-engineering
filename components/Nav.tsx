@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const links = [
+const links: { href: string; label: string; highlight?: boolean }[] = [
   { href: "#services", label: "Solutions" },
   { href: "#sectors", label: "Industries" },
   { href: "#about", label: "Company" },
   { href: "#process", label: "How we work" },
-  { href: "#affiliate", label: "Partners" }
+  { href: "#affiliate", label: "Become an Affiliate Partner", highlight: true }
 ];
 
 export default function Nav() {
@@ -36,26 +36,30 @@ export default function Nav() {
           />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="spec text-steel transition-colors hover:text-paper"
+              className={
+                l.highlight
+                  ? "spec text-paper underline decoration-amp/70 underline-offset-4 transition-colors hover:text-amp"
+                  : "spec text-steel transition-colors hover:text-paper"
+              }
             >
               {l.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="spec border border-amp px-4 py-2 text-amp transition-colors hover:bg-amp hover:text-ink"
+            className="spec hidden border border-amp px-4 py-2 text-amp transition-colors hover:bg-amp hover:text-ink xl:inline-block"
           >
             Request a consultation
           </a>
         </nav>
 
         <button
-          className="text-paper md:hidden"
+          className="text-paper lg:hidden"
           aria-label="Toggle menu"
           onClick={() => setOpen(!open)}
         >
@@ -66,13 +70,17 @@ export default function Nav() {
       </div>
 
       {open && (
-        <nav className="border-t border-linedark/50 bg-ink/95 px-5 pb-6 pt-2 backdrop-blur-md md:hidden">
+        <nav className="border-t border-linedark/50 bg-ink/95 px-5 pb-6 pt-2 backdrop-blur-md lg:hidden">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="spec block py-3 text-steel"
+              className={
+                l.highlight
+                  ? "spec block py-3 text-paper underline decoration-amp/70 underline-offset-4"
+                  : "spec block py-3 text-steel"
+              }
             >
               {l.label}
             </a>
