@@ -4,7 +4,7 @@ import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
 import "react-phone-number-input/style.css";
 import Reveal from "./Reveal";
-import { site } from "../lib/site.config";
+import { site, waLink } from "../lib/site.config";
 
 const sectors = [
   "Data centers",
@@ -120,6 +120,21 @@ export default function Contact() {
             Developing a new infrastructure project, sourcing critical equipment,
             evaluating offshore assets or structuring a complex opportunity — we
             can help you identify the right solution pathway.
+          </p>
+          <p className="mt-4 max-w-md text-slate">
+            Prefer a quick message?{" "}
+            <a
+              href={waLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 border-b border-amp/50 font-medium text-deep transition-colors hover:border-amp hover:text-amp"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" aria-hidden>
+                <path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.18 8.18 0 0 1-2.4-1.48 9 9 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.11.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.58-.35Z" />
+                <path d="M12.04 2a9.9 9.9 0 0 0-8.57 14.86L2 22l5.27-1.38A9.94 9.94 0 1 0 12.04 2Zm0 18.15c-1.5 0-2.97-.4-4.25-1.16l-.3-.18-3.13.82.84-3.05-.2-.31a8.26 8.26 0 1 1 7.04 3.88Z" />
+              </svg>
+              Contact us via WhatsApp
+            </a>
           </p>
 
           <dl className="mt-10 space-y-6">
