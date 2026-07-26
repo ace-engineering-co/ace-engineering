@@ -83,8 +83,7 @@ export default function StatsBand() {
               transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="mb-4 block h-px w-12 origin-left bg-amp"
             />
-            <p className="spec text-amp">W/{String(i + 1).padStart(2, "0")}</p>
-            <h3 className="display mt-3 text-3xl text-paper">{p.title}</h3>
+            <h3 className="display text-3xl text-paper">{p.title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-steel">{p.body}</p>
           </div>
         ))}

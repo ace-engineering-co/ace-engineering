@@ -197,7 +197,7 @@ export default function Hero() {
           <motion.div style={reduce ? undefined : { x: chipMx, y: chipMy }} className="absolute inset-0">
             <Chip
               src="/img/chip-a.webp"
-              label="Genset module · G-04"
+              label="Genset module"
               value="2.0 MW"
               status="Online"
               floatDur="7s"

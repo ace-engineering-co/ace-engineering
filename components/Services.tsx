@@ -6,44 +6,71 @@ import Reveal from "./Reveal";
 
 const services = [
   {
-    code: "S/01",
     img: "/img/svc-01.webp",
     title: "Power generation solutions",
     body: "Reliable and scalable power generation tailored to mission-critical, industrial, temporary and captive power applications.",
-    tags: ["Gas gensets", "Diesel gensets", "Gas turbines", "Industrial turbines"]
+    tags: ["Gas generator sets", "Diesel generator sets", "Gas turbines", "Industrial turbines"]
   },
   {
-    code: "S/02",
     img: "/img/svc-02.webp",
     title: "Electrical infrastructure",
     body: "Distribution, protection, control and monitoring systems for projects that demand dependable electrical infrastructure.",
-    tags: ["LV & MV switchgear", "Control panels", "Synchronization", "Protection", "Power management", "SCADA"]
+    tags: [
+      "LV switchgear",
+      "MV switchgear",
+      "Generator control panels",
+      "Synchronization panels",
+      "Protection systems",
+      "Power management systems",
+      "SCADA & monitoring"
+    ]
   },
   {
-    code: "S/03",
     img: "/img/svc-05.webp",
     title: "Packaged infrastructure",
     body: "Custom-engineered packages combining equipment, fabrication, modularization and site-ready integration.",
-    tags: ["Acoustic enclosures", "Containerized packages", "E-houses", "Tanks & skids", "Steel fabrication"]
+    tags: [
+      "Acoustic enclosures",
+      "Generator canopies",
+      "Containerized packages",
+      "E-houses",
+      "Tanks & process skids",
+      "Structural steel fabrication",
+      "Modular equipment packages"
+    ]
   },
   {
-    code: "S/04",
     // TODO: swap for a marine/offshore photo — no offshore image exists yet
     img: "/img/svc-03.webp",
     title: "Offshore infrastructure",
     body: "Specialized asset solutions supporting offshore energy, marine logistics and infrastructure projects.",
-    tags: ["Liftboats", "Jack-up barges", "Tugboats", "Support vessels", "Acquisition & chartering"]
+    tags: [
+      "Liftboats",
+      "Jack-up barges",
+      "Tugboats",
+      "Offshore support vessels",
+      "Technical & commercial evaluation",
+      "Asset acquisition support",
+      "Chartering support"
+    ]
   },
   {
-    code: "S/05",
     img: "/img/svc-06.webp",
     title: "Project development & advisory",
     body: "Helping clients evaluate opportunities, structure projects and align commercial and technical requirements.",
-    tags: ["Opportunity assessment", "Feasibility", "Technology selection", "CAPEX/OPEX", "Commercial structuring"]
+    tags: [
+      "Opportunity assessment",
+      "Feasibility support",
+      "Technology selection",
+      "Supplier evaluation",
+      "CAPEX/OPEX analysis",
+      "Delivery strategy",
+      "Commercial structuring"
+    ]
   }
 ];
 
-function Card({ s, i, wide }: { s: (typeof services)[number]; i: number; wide?: boolean }) {
+function Card({ s, wide }: { s: (typeof services)[number]; wide?: boolean }) {
   return (
     <article
       className={`group relative flex h-[28rem] flex-col justify-between overflow-hidden border border-linedark/40 bg-ink p-8 transition-colors duration-300 hover:border-amp ${
@@ -59,18 +86,33 @@ function Card({ s, i, wide }: { s: (typeof services)[number]; i: number; wide?: 
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/25 transition-opacity duration-500 group-hover:via-ink/50" />
-      {/* Ghost index */}
-      <span aria-hidden className="ghost-text display absolute -right-1 top-3 text-8xl opacity-60">
-        {String(i + 1).padStart(2, "0")}
-      </span>
 
       <div className="relative">
-        <p className="spec text-amp">{s.code}</p>
-        <h3 className="display mt-5 text-3xl text-paper">{s.title}</h3>
+        <h3 className="display text-3xl text-paper">{s.title}</h3>
       </div>
       <div className="relative">
         <p className="text-sm leading-relaxed text-haze">{s.body}</p>
-        <ul className="mt-4 flex flex-wrap gap-1.5">
+        {/* Capabilities: collapsed on the desktop gallery, expands on hover; always open on mobile */}
+        <div className="mt-4 flex items-center justify-between">
+          <span className="spec text-[0.62rem] text-amp">Capabilities</span>
+          {wide && (
+            <span
+              aria-hidden
+              className="flex h-5 w-5 items-center justify-center border border-amp/60 text-amp transition-transform duration-300 group-hover:rotate-45"
+            >
+              <svg width="9" height="9" viewBox="0 0 10 10">
+                <path d="M5 0v10M0 5h10" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+            </span>
+          )}
+        </div>
+        <ul
+          className={`flex flex-wrap gap-1.5 overflow-hidden transition-all duration-500 ease-out ${
+            wide
+              ? "mt-0 max-h-0 opacity-0 group-hover:mt-3 group-hover:max-h-56 group-hover:opacity-100"
+              : "mt-3"
+          }`}
+        >
           {s.tags.map((t) => (
             <li
               key={t}
@@ -136,8 +178,8 @@ export default function Services() {
             style={reduce ? undefined : { x }}
             className="mt-14 flex gap-6 pl-[max(1.25rem,calc((100vw-76rem)/2+2rem))] pr-12"
           >
-            {services.map((s, i) => (
-              <Card key={s.code} s={s} i={i} wide />
+            {services.map((s) => (
+              <Card key={s.title} s={s} wide />
             ))}
           </motion.div>
         </div>
@@ -156,8 +198,8 @@ export default function Services() {
         </Reveal>
         <div className="mt-12 space-y-5">
           {services.map((s, i) => (
-            <Reveal key={s.code} delay={i * 0.05} y={18}>
-              <Card s={s} i={i} />
+            <Reveal key={s.title} delay={i * 0.05} y={18}>
+              <Card s={s} />
             </Reveal>
           ))}
         </div>

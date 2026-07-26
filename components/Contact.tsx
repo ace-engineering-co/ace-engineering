@@ -119,8 +119,7 @@ export default function Contact() {
           <p className="mt-6 max-w-md text-slate">
             Developing a new infrastructure project, sourcing critical equipment,
             evaluating offshore assets or structuring a complex opportunity — we
-            can help you identify the right solution pathway. All information is
-            treated as commercially confidential.
+            can help you identify the right solution pathway.
           </p>
 
           <dl className="mt-10 space-y-6">
