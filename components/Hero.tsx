@@ -20,10 +20,10 @@ const WIRES = [
 function Pulse({ path, dur, delay = 0 }: { path: string; dur: number; delay?: number }) {
   return (
     <>
-      <circle r="7" fill="#F58220" opacity="0.28" filter="url(#pulseblur)">
+      <circle r="7" fill="#7FA6D9" opacity="0.28" filter="url(#pulseblur)">
         <animateMotion dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite" path={path} />
       </circle>
-      <circle r="2.6" fill="#FFD9AE">
+      <circle r="2.6" fill="#EAF2FC">
         <animateMotion dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite" path={path} />
       </circle>
     </>
@@ -141,7 +141,7 @@ export default function Hero() {
           className="animate-aurora absolute left-[-15%] top-[8%] h-[70vh] w-[70vw] rounded-full mix-blend-screen"
           style={{
             background:
-              "radial-gradient(closest-side, rgba(245,130,32,0.28), rgba(46,111,242,0.10) 55%, transparent 75%)",
+              "radial-gradient(closest-side, rgba(127,166,217,0.30), rgba(46,111,242,0.10) 55%, transparent 75%)",
             filter: "blur(60px)"
           }}
         />
@@ -159,7 +159,7 @@ export default function Hero() {
               <feGaussianBlur stdDeviation="4" />
             </filter>
           </defs>
-          <g fill="none" stroke="#F58220" strokeWidth="1.4">
+          <g fill="none" stroke="#7FA6D9" strokeWidth="1.4">
             {WIRES.map((w) => (
               <motion.path
                 key={w.d}
@@ -178,8 +178,8 @@ export default function Hero() {
               y={y - 7}
               width="14"
               height="14"
-              fill="#070D1A"
-              stroke="#F58220"
+              fill="#040E1C"
+              stroke="#7FA6D9"
               strokeWidth="1.4"
               transform={`rotate(45 ${x} ${y})`}
             />

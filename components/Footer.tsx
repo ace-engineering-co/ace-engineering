@@ -22,14 +22,12 @@ export default function Footer() {
   return (
     <footer className="relative z-10 bg-ink py-10">
       <div className="mx-auto flex max-w-wrap flex-col items-start justify-between gap-6 px-5 md:flex-row md:items-center lg:px-8">
-        <div className="flex items-center gap-3">
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
-            <rect x="3" y="3" width="10" height="10" fill="none" stroke="#F58220" strokeWidth="2" transform="rotate(45 8 8)" />
-          </svg>
-          <span className="display text-lg text-paper">
-            ACE <span className="text-amp">Engineering</span>
-          </span>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/brand/logo-horizontal-white.svg"
+          alt="ACE Engineering"
+          className="h-7 w-auto"
+        />
         <p className="spec text-steel">
           © {new Date().getFullYear()} {site.name} · {site.tagline}
         </p>

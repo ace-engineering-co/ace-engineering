@@ -108,7 +108,7 @@ export default function About() {
                         width="10"
                         height="10"
                         fill="none"
-                        stroke="#F58220"
+                        stroke="#7FA6D9"
                         strokeWidth="2"
                         transform="rotate(45 8 8)"
                       />

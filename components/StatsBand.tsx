@@ -63,7 +63,7 @@ export default function StatsBand() {
             <span key={`${t}-${i}`} className="flex items-center gap-10">
               <span className="ghost-text display text-5xl md:text-6xl">{t}</span>
               <svg width="14" height="14" viewBox="0 0 16 16">
-                <rect x="3" y="3" width="10" height="10" fill="none" stroke="#F58220" strokeWidth="2" transform="rotate(45 8 8)" />
+                <rect x="3" y="3" width="10" height="10" fill="none" stroke="#7FA6D9" strokeWidth="2" transform="rotate(45 8 8)" />
               </svg>
             </span>
           ))}

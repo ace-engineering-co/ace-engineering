@@ -41,7 +41,7 @@ export default function Affiliate() {
       <div
         aria-hidden
         className="absolute -right-32 -top-32 h-96 w-96 rounded-full opacity-25 mix-blend-screen"
-        style={{ background: "radial-gradient(closest-side, #F58220, transparent 70%)", filter: "blur(40px)" }}
+        style={{ background: "radial-gradient(closest-side, #7FA6D9, transparent 70%)", filter: "blur(40px)" }}
       />
       <div className="grain" />
 

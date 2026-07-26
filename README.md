@@ -54,8 +54,9 @@ API key and a small `/app/api/contact/route.ts` handler, or point the form
 
 | Token | Value | Use |
 |---|---|---|
-| `ink` | `#060B18` | Page background |
-| `amp` | `#F58220` | Accent |
+| `ink` | `#040E1C` | Page background |
+| `navy` | `#05162D` | Brand navy (logo colour) |
+| `amp` | `#7FA6D9` | Accent — steel/ice blue |
 | `volt` | `#2E6FF2` | Blueprint grid lines only |
 | Display | Barlow Condensed | Headlines, uppercase |
 | Body | IBM Plex Sans | Paragraphs |
