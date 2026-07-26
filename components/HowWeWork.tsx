@@ -30,7 +30,7 @@ export default function HowWeWork() {
       <div className="mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
           <p className="spec text-amp">How we work</p>
-          <h2 className="display mt-4 max-w-3xl text-5xl text-deep md:text-6xl">
+          <h2 className="display mt-4 max-w-3xl text-4xl text-deep sm:text-5xl md:text-6xl">
             A structured approach to delivery.
           </h2>
         </Reveal>

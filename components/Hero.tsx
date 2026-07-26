@@ -230,7 +230,7 @@ export default function Hero() {
             ACE Engineering — Infrastructure Solutions
           </motion.p>
 
-          <h1 className="display max-w-4xl text-6xl text-paper sm:text-7xl lg:text-8xl">
+          <h1 className="display max-w-4xl text-5xl text-paper sm:text-6xl md:text-7xl lg:text-8xl">
             {["Integrated", "infrastructure", "solutions."].map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <motion.span
@@ -272,7 +272,7 @@ export default function Hero() {
               href="#contact"
               className="spec border border-paper/30 px-7 py-4 text-paper transition-colors hover:border-amp hover:text-amp"
             >
-              Discuss your project
+              Request a consultation
             </a>
           </motion.div>
 
