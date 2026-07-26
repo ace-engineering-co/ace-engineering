@@ -114,7 +114,7 @@ export default function Contact() {
         <Reveal>
           <p className="spec text-amp">Contact</p>
           <h2 className="display mt-4 text-5xl text-deep md:text-6xl">
-            Discuss your project.
+            Request a consultation.
           </h2>
           <p className="mt-6 max-w-md text-slate">
             Developing a new infrastructure project, sourcing critical equipment,

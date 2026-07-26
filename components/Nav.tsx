@@ -6,8 +6,7 @@ const links = [
   { href: "#sectors", label: "Industries" },
   { href: "#about", label: "Company" },
   { href: "#process", label: "How we work" },
-  { href: "#affiliate", label: "Partners" },
-  { href: "#contact", label: "Contact" }
+  { href: "#affiliate", label: "Partners" }
 ];
 
 export default function Nav() {
@@ -51,7 +50,7 @@ export default function Nav() {
             href="#contact"
             className="spec border border-amp px-4 py-2 text-amp transition-colors hover:bg-amp hover:text-ink"
           >
-            Discuss your project
+            Request a consultation
           </a>
         </nav>
 
@@ -78,6 +77,13 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="spec mt-3 inline-block border border-amp px-4 py-2 text-amp"
+          >
+            Request a consultation
+          </a>
         </nav>
       )}
     </header>

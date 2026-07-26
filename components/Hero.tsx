@@ -272,7 +272,7 @@ export default function Hero() {
               href="#contact"
               className="spec border border-paper/30 px-7 py-4 text-paper transition-colors hover:border-amp hover:text-amp"
             >
-              Discuss your project
+              Request a consultation
             </a>
           </motion.div>
 
