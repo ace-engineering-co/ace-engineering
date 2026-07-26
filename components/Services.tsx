@@ -164,7 +164,7 @@ export default function Services() {
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
           <div className="mx-auto w-full max-w-wrap px-5 lg:px-8">
             <p className="spec text-amp">Our solutions</p>
-            <h2 className="display mt-4 text-5xl text-deep md:text-6xl">
+            <h2 className="display mt-4 text-4xl text-deep sm:text-5xl md:text-6xl">
               Built around real project needs.
             </h2>
             <p className="mt-4 max-w-2xl text-base text-deep/70">
@@ -189,7 +189,7 @@ export default function Services() {
       <div className="px-5 py-24 md:hidden">
         <Reveal>
           <p className="spec text-amp">Our solutions</p>
-          <h2 className="display mt-4 text-5xl text-deep">Built around real project needs.</h2>
+          <h2 className="display mt-4 text-4xl text-deep">Built around real project needs.</h2>
           <p className="mt-4 text-base text-deep/70">
             Infrastructure projects require more than equipment supply — they
             need the right combination of technology, engineering, fabrication,
