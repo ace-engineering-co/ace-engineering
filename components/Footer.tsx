@@ -24,9 +24,9 @@ export default function Footer() {
       <div className="mx-auto flex max-w-wrap flex-col items-start justify-between gap-6 px-5 md:flex-row md:items-center lg:px-8">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/brand/logo-horizontal-white.svg"
+          src="/brand/logo-primary-white.svg"
           alt="ACE Engineering"
-          className="h-7 w-auto"
+          className="h-16 w-auto"
         />
         <p className="spec text-steel">
           © {new Date().getFullYear()} {site.name} · {site.tagline}

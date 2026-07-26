@@ -30,10 +30,10 @@ page order: `Hero`, `Services` (5 solutions + capability tags), `StatsBand`
 (Why-ACE pillars + marquee), `Sectors` (4 industries), `About`, `HowWeWork`
 (5-step process), `Affiliate` (5-step programme), `Contact`.
 
-Brand assets live in `public/brand/` — vector-only set from the client's logo
-package (primary navy `#05162D`): primary/horizontal/icon lockups in navy,
-white and black. The white variants of the horizontal + icon marks are derived
-recolors of the navy SVGs (the package only shipped raster PNGs for those).
+Brand assets live in `public/brand/` — the primary lockup from the client's
+logo package as vector SVG in navy (`#05162D`), white and black. Per the
+client, only the primary lockup is used; the favicon (`app/icon.svg`) inlines
+the A-peak mark from the same artwork.
 
 Imagery still to swap:
 

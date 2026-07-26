@@ -27,13 +27,13 @@ export default function Nav() {
         scrolled ? "border-b border-linedark/50 bg-ink/85 backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-wrap items-center justify-between px-5 py-4 lg:px-8">
+      <div className="mx-auto flex max-w-wrap items-center justify-between px-5 py-3 lg:px-8">
         <a href="#top" className="flex items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/brand/logo-horizontal-white.svg"
+            src="/brand/logo-primary-white.svg"
             alt="ACE Engineering"
-            className="h-8 w-auto"
+            className="h-12 w-auto"
           />
         </a>
 
