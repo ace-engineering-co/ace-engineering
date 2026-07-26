@@ -112,3 +112,9 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Breathing glow for the rectangular floating CTA */
+@keyframes glowpulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(127, 166, 217, 0.45); }
+  50% { box-shadow: 0 0 26px 6px rgba(127, 166, 217, 0.45); }
+}

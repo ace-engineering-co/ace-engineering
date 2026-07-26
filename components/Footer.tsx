@@ -1,13 +1,13 @@
 import { site, waLink } from "../lib/site.config";
 
-/** Floating consultation CTA — persistent across the page. */
+/** Floating consultation CTA — vertical tab pinned to the right edge, mid-height. */
 export function ConsultationFab() {
   return (
     <a
       href="#contact"
-      className="spec fixed bottom-8 right-6 z-50 bg-amp px-5 py-3.5 font-medium text-ink shadow-[0_8px_30px_rgba(127,166,217,0.35)] transition-transform hover:scale-110"
+      className="spec fixed right-0 top-1/2 z-50 -translate-y-1/2 bg-amp px-3.5 py-6 font-medium text-ink transition-transform [writing-mode:vertical-rl] hover:-translate-x-1"
+      style={{ animation: "glowpulse 2.6s ease-in-out infinite" }}
     >
-      <span className="absolute inset-0 -z-10 animate-ping bg-amp/40 [animation-duration:2.5s]" />
       Request a consultation
     </a>
   );
