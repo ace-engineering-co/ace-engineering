@@ -266,7 +266,7 @@ export default function Contact() {
               type="submit"
               className="spec mt-6 w-full bg-amp py-4 font-medium text-ink transition-colors hover:bg-deep hover:text-paper"
             >
-              Submit enquiry
+              Submit
             </button>
           </form>
         </Reveal>
