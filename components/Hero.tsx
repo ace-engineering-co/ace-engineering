@@ -63,7 +63,7 @@ function Chip({
         <div className="flex items-end justify-between px-1 pb-0.5 pt-2">
           <div>
             <p className="spec text-[0.58rem] text-steel">{label}</p>
-            <p className="display mt-0.5 text-xl text-paper">{value}</p>
+            <p className="display mt-0.5 text-lg text-paper">{value}</p>
           </div>
           <p className="spec flex items-center gap-1.5 text-[0.58rem] text-amp">
             <span className="relative flex h-1.5 w-1.5">
@@ -230,7 +230,7 @@ export default function Hero() {
             ACE Engineering — Infrastructure Solutions
           </motion.p>
 
-          <h1 className="display max-w-4xl text-6xl text-paper sm:text-7xl lg:text-8xl">
+          <h1 className="display max-w-4xl text-3xl text-paper sm:text-5xl lg:text-6xl">
             {["Integrated", "infrastructure", "solutions."].map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <motion.span

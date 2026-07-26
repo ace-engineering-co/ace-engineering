@@ -58,7 +58,7 @@ API key and a small `/app/api/contact/route.ts` handler, or point the form
 | `navy` | `#05162D` | Brand navy (logo colour) |
 | `amp` | `#7FA6D9` | Accent — steel/ice blue |
 | `volt` | `#2E6FF2` | Blueprint grid lines only |
-| Display | Barlow Condensed | Headlines, uppercase |
+| Display | Orbitron | Headlines, uppercase — matches the logo's techno-extended wordmark |
 | Body | IBM Plex Sans | Paragraphs |
 | Spec | IBM Plex Mono | Labels, figures, eyebrows |
 

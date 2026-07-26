@@ -55,7 +55,7 @@ export default function About() {
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>
             <p className="spec text-amp">Company</p>
-            <h2 className="display mt-4 text-5xl text-deep md:text-6xl">
+            <h2 className="display mt-4 text-4xl text-deep md:text-5xl">
               Practical infrastructure solutions.
             </h2>
             <p className="mt-6 text-slate">
@@ -125,7 +125,7 @@ export default function About() {
           {principles.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.1} y={18} className="h-full">
               <div className="h-full border-l-2 border-amp bg-cloud p-7">
-                <h3 className="display text-2xl text-deep">{p.title}</h3>
+                <h3 className="display text-xl text-deep">{p.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate">{p.body}</p>
               </div>
             </Reveal>

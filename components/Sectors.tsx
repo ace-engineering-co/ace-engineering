@@ -28,7 +28,7 @@ export default function Sectors() {
       <div className="mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
           <p className="spec text-amp">Industries</p>
-          <h2 className="display mt-4 max-w-3xl text-5xl text-deep md:text-6xl">
+          <h2 className="display mt-4 max-w-3xl text-4xl text-deep md:text-5xl">
             Built for critical industries.
           </h2>
           <p className="mt-6 max-w-2xl text-slate">
@@ -59,13 +59,13 @@ export default function Sectors() {
                       </span>
                       High demand
                     </p>
-                    <h3 className="display text-2xl text-paper">{s.name}</h3>
+                    <h3 className="display text-xl text-paper">{s.name}</h3>
                   </div>
                   <p className="relative mt-4 text-sm text-haze">{s.detail}</p>
                 </div>
               ) : (
                 <div className="flex h-full flex-col justify-between border border-hairline bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-amp/50 hover:shadow-lg">
-                  <h3 className="display text-2xl text-deep">{s.name}</h3>
+                  <h3 className="display text-xl text-deep">{s.name}</h3>
                   <p className="mt-4 text-sm text-slate">{s.detail}</p>
                 </div>
               )}

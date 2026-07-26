@@ -48,7 +48,7 @@ export default function Affiliate() {
       <div className="relative mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
           <p className="spec text-amp">Affiliate partner programme</p>
-          <h2 className="display mt-4 max-w-3xl text-4xl text-paper md:text-5xl">
+          <h2 className="display mt-4 max-w-3xl text-3xl text-paper md:text-4xl">
             Become an affiliate partner.
           </h2>
           <p className="mt-6 max-w-3xl text-haze">
@@ -83,7 +83,7 @@ export default function Affiliate() {
               <div className="flex items-start gap-4">
                 <span className="spec mt-1 text-amp">{String(i + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3 className="display text-xl text-paper">{s.title}</h3>
+                  <h3 className="display text-lg text-paper">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-haze/90">{s.body}</p>
                 </div>
               </div>

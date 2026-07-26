@@ -61,7 +61,7 @@ export default function StatsBand() {
         <div className="animate-marquee flex w-max items-center gap-10 whitespace-nowrap pr-10">
           {[...ticker, ...ticker].map((t, i) => (
             <span key={`${t}-${i}`} className="flex items-center gap-10">
-              <span className="ghost-text display text-5xl md:text-6xl">{t}</span>
+              <span className="ghost-text display text-4xl md:text-5xl">{t}</span>
               <svg width="14" height="14" viewBox="0 0 16 16">
                 <rect x="3" y="3" width="10" height="10" fill="none" stroke="#7FA6D9" strokeWidth="2" transform="rotate(45 8 8)" />
               </svg>
@@ -83,7 +83,7 @@ export default function StatsBand() {
               transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="mb-4 block h-px w-12 origin-left bg-amp"
             />
-            <h3 className="display text-3xl text-paper">{p.title}</h3>
+            <h3 className="display text-2xl text-paper">{p.title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-steel">{p.body}</p>
           </div>
         ))}

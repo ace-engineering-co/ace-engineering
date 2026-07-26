@@ -22,7 +22,7 @@ const config: Config = {
         ampdeep: "#54749E"
       },
       fontFamily: {
-        display: ["'Barlow Condensed'", "sans-serif"],
+        display: ["'Orbitron Variable'", "sans-serif"],
         sans: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
         mono: ["'IBM Plex Mono'", "monospace"]
       },

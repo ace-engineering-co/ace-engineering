@@ -113,7 +113,7 @@ export default function Contact() {
       <div className="mx-auto grid max-w-wrap gap-14 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <Reveal>
           <p className="spec text-amp">Contact</p>
-          <h2 className="display mt-4 text-5xl text-deep md:text-6xl">
+          <h2 className="display mt-4 text-4xl text-deep md:text-5xl">
             Discuss your project.
           </h2>
           <p className="mt-6 max-w-md text-slate">

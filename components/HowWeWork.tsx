@@ -30,7 +30,7 @@ export default function HowWeWork() {
       <div className="mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
           <p className="spec text-amp">How we work</p>
-          <h2 className="display mt-4 max-w-3xl text-5xl text-deep md:text-6xl">
+          <h2 className="display mt-4 max-w-3xl text-4xl text-deep md:text-5xl">
             A structured approach to delivery.
           </h2>
         </Reveal>
@@ -40,7 +40,7 @@ export default function HowWeWork() {
             <Reveal key={s.title} delay={i * 0.08} y={18} className="h-full">
               <div className="flex h-full flex-col border-l-2 border-amp bg-white p-6">
                 <p className="spec text-amp">{String(i + 1).padStart(2, "0")}</p>
-                <h3 className="display mt-4 text-xl text-deep">{s.title}</h3>
+                <h3 className="display mt-4 text-lg text-deep">{s.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate">{s.body}</p>
               </div>
             </Reveal>
