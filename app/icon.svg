@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <rect width="32" height="32" fill="#05162D"/>
-  <g transform="translate(2.94 8.95) scale(0.012405)">
+  <g transform="translate(-0.08 7.33) scale(0.015267)">
     <path d="M 5 1129 L 264 1008 L 537 923 L 788 878 L 1081 862 L 1337 880 L 1608 933 L 1880 1024 L 2101 1131 L 2047 1076 L 1939 998 L 1817 930 L 1684 874 L 1401 799 L 1093 770 L 777 788 L 480 854 L 326 913 L 198 979 L 81 1058 Z M 588 786 L 820 743 L 1054 360 L 1286 743 L 1519 789 L 1054 5 Z" fill="#FFFFFF" fill-rule="evenodd"/>
   </g>
 </svg>
