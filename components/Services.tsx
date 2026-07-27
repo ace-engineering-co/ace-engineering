@@ -40,7 +40,6 @@ const services = [
     ]
   },
   {
-    // TODO: swap for a marine/offshore photo — no offshore image exists yet
     img: "/img/svc-03.webp",
     title: "Offshore infrastructure",
     body: "Specialized asset solutions supporting offshore energy, marine logistics and infrastructure projects.",
