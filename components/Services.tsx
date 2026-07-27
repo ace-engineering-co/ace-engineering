@@ -1,7 +1,14 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useReducedMotion,
+  useMotionValueEvent
+} from "framer-motion";
 import Reveal from "./Reveal";
 
 /**
@@ -186,6 +193,21 @@ export default function Services() {
   const xRaw = useTransform(scrollYProgress, [0.12, 0.95], [0, -overflow]);
   const x = useSpring(xRaw, { stiffness: 90, damping: 28, mass: 0.7 });
 
+  // Skip arrow: jumps the page scroll (the single source of truth driving the
+  // track) to the gallery's end, or back to its start once there.
+  const [atEnd, setAtEnd] = useState(false);
+  useMotionValueEvent(scrollYProgress, "change", (v) => setAtEnd(v > 0.9));
+
+  const jump = () => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    // Default useScroll offset: progress spans sectionHeight - viewportHeight
+    const span = el.offsetHeight - window.innerHeight;
+    // 0.12 / 0.95 are the progress stops where the track rests at start / end
+    window.scrollTo({ top: top + (atEnd ? 0.12 : 0.95) * span, behavior: "smooth" });
+  };
+
   return (
     <section id="services" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-white">
       {/* Desktop: pinned horizontal scroll */}
@@ -211,6 +233,28 @@ export default function Services() {
               <Card key={s.title} s={s} wide />
             ))}
           </motion.div>
+          {!reduce && (
+            <div className="mt-6 flex w-full justify-end pr-12">
+              <button
+                onClick={jump}
+                aria-label={atEnd ? "Back to the first card" : "Skip to the last card"}
+                className="p-2 text-ampdeep transition-colors duration-300 hover:text-amp"
+              >
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className={`transition-transform duration-300 ${atEnd ? "rotate-180" : ""}`}
+                  aria-hidden
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
