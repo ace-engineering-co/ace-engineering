@@ -52,10 +52,21 @@ export default function Sectors() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
                   <div className="relative">
-                    <p className="spec mb-3 flex items-center gap-2 text-amp">
+                    <p
+                      className="spec mb-3 flex items-center gap-2"
+                      style={{
+                        /* neon: bright core + amp-blue halo so it stays legible over the photo */
+                        color: "#EAF2FC",
+                        textShadow:
+                          "0 0 3px rgba(234,242,252,0.6), 0 0 8px rgba(127,166,217,1), 0 0 18px rgba(46,111,242,0.9), 0 0 32px rgba(46,111,242,0.6), 0 1px 3px rgba(4,14,28,0.9)"
+                      }}
+                    >
                       <span className="relative flex h-1.5 w-1.5">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amp/60" />
-                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amp" />
+                        <span
+                          className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amp"
+                          style={{ boxShadow: "0 0 6px rgba(127,166,217,0.9), 0 0 12px rgba(46,111,242,0.7)" }}
+                        />
                       </span>
                       High demand
                     </p>
