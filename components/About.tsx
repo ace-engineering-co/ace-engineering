@@ -84,7 +84,7 @@ export default function About() {
               >
                 <Image
                   src="/img/about-tower.webp"
-                  alt="High-voltage substation at dusk — grid infrastructure ACE Engineering delivers and operates"
+                  alt="Row of containerized power modules at sunset — packaged infrastructure ACE Engineering delivers and operates"
                   fill
                   sizes="(min-width: 1024px) 34rem, 28rem"
                   className="object-cover"
