@@ -10,6 +10,7 @@ import Reveal from "./Reveal";
  *  - amber: grayscale + color-blend wash (the old orange duotone)
  *  - navy:  multiply wash over the full-color photo (the old blue look)
  */
+const SHOW_TINTS = false;
 const TINTS: Record<
   string,
   { color: string; blend: NonNullable<React.CSSProperties["mixBlendMode"]>; grayscale: boolean }
@@ -89,7 +90,7 @@ const services = [
 ];
 
 function Card({ s, wide }: { s: (typeof services)[number]; wide?: boolean }) {
-  const tint = TINTS[s.tint];
+  const tint = SHOW_TINTS ? TINTS[s.tint] : undefined;
   return (
     <article
       className={`group relative flex h-[28rem] flex-col justify-between overflow-hidden border border-linedark/40 bg-ink p-8 transition-colors duration-300 hover:border-amp ${
