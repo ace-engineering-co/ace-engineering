@@ -4,15 +4,31 @@ import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 import Reveal from "./Reveal";
 
+/**
+ * Color washes were previously baked into the photos; applied here as CSS
+ * layers instead so the source images stay full-color.
+ *  - amber: grayscale + color-blend wash (the old orange duotone)
+ *  - navy:  multiply wash over the full-color photo (the old blue look)
+ */
+const TINTS: Record<
+  string,
+  { color: string; blend: NonNullable<React.CSSProperties["mixBlendMode"]>; grayscale: boolean }
+> = {
+  amber: { color: "#C97A2E", blend: "color", grayscale: true },
+  navy: { color: "#284E85", blend: "multiply", grayscale: false }
+};
+
 const services = [
   {
     img: "/img/svc-01.webp",
+    tint: "amber",
     title: "Power generation solutions",
     body: "Reliable and scalable power generation tailored to mission-critical, industrial, temporary and captive power applications.",
     tags: ["Gas generator sets", "Diesel generator sets", "Gas turbines", "Industrial turbines"]
   },
   {
     img: "/img/svc-02.webp",
+    tint: "navy",
     title: "Electrical infrastructure",
     body: "Distribution, protection, control and monitoring systems for projects that demand dependable electrical infrastructure.",
     tags: [
@@ -27,6 +43,7 @@ const services = [
   },
   {
     img: "/img/svc-05.webp",
+    tint: "amber",
     title: "Packaged infrastructure",
     body: "Custom-engineered packages combining equipment, fabrication, modularization and site-ready integration.",
     tags: [
@@ -41,6 +58,7 @@ const services = [
   },
   {
     img: "/img/svc-03.webp",
+    tint: "navy",
     title: "Offshore infrastructure",
     body: "Specialized asset solutions supporting offshore energy, marine logistics and infrastructure projects.",
     tags: [
@@ -55,6 +73,7 @@ const services = [
   },
   {
     img: "/img/svc-06.webp",
+    tint: "none",
     title: "Project development & advisory",
     body: "Helping clients evaluate opportunities, structure projects and align commercial and technical requirements.",
     tags: [
@@ -70,6 +89,7 @@ const services = [
 ];
 
 function Card({ s, wide }: { s: (typeof services)[number]; wide?: boolean }) {
+  const tint = TINTS[s.tint];
   return (
     <article
       className={`group relative flex h-[28rem] flex-col justify-between overflow-hidden border border-linedark/40 bg-ink p-8 transition-colors duration-300 hover:border-amp ${
@@ -82,8 +102,17 @@ function Card({ s, wide }: { s: (typeof services)[number]; wide?: boolean }) {
         alt=""
         fill
         sizes="(min-width: 768px) 24rem, 100vw"
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        className={`object-cover transition-transform duration-700 ease-out group-hover:scale-110 ${
+          tint?.grayscale ? "grayscale" : ""
+        }`}
       />
+      {tint && (
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{ backgroundColor: tint.color, mixBlendMode: tint.blend }}
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/25 transition-opacity duration-500 group-hover:via-ink/50" />
 
       <div className="relative">
