@@ -44,7 +44,9 @@ export default function Nav() {
               className={
                 l.highlight
                   ? "spec text-paper underline decoration-amp/70 underline-offset-4 transition-colors hover:text-amp"
-                  : "spec text-steel transition-colors hover:text-paper"
+                  : `spec transition-colors hover:text-paper ${
+                      scrolled ? "text-steel" : "text-[#C5CDDB]"
+                    }`
               }
             >
               {l.label}
