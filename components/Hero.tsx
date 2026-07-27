@@ -132,7 +132,7 @@ export default function Hero() {
               className="object-cover object-center"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/45" />
         </motion.div>
 
         {/* Aurora energy glow */}
