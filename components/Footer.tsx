@@ -29,7 +29,7 @@ export default function Footer() {
           className="h-8 w-auto"
         />
         <p className="spec text-steel">
-          © {new Date().getFullYear()} {site.name} · {site.tagline}
+          © {new Date().getFullYear()} {site.name}. All rights reserved.
         </p>
       </div>
     </footer>

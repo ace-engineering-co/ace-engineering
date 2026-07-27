@@ -227,7 +227,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="spec mb-6 text-amp"
           >
-            ACE Engineering — Infrastructure Solutions
+            ACE Engineering
           </motion.p>
 
           <h1 className="display max-w-4xl text-5xl text-paper sm:text-6xl md:text-7xl lg:text-8xl">
