@@ -234,24 +234,26 @@ export default function Services() {
             ))}
           </motion.div>
           {!reduce && (
-            <button
-              onClick={jump}
-              aria-label={atEnd ? "Back to the first card" : "Skip to the last card"}
-              className="absolute bottom-8 right-8 flex h-12 w-12 items-center justify-center border border-amp/60 bg-white/80 text-ampdeep backdrop-blur-sm transition-colors duration-300 hover:bg-amp hover:text-ink"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className={`transition-transform duration-300 ${atEnd ? "rotate-180" : ""}`}
-                aria-hidden
+            <div className="mt-6 flex w-full justify-end pr-12">
+              <button
+                onClick={jump}
+                aria-label={atEnd ? "Back to the first card" : "Skip to the last card"}
+                className="p-2 text-ampdeep transition-colors duration-300 hover:text-amp"
               >
-                <path d="M4 12h16m-6-6 6 6-6 6" />
-              </svg>
-            </button>
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className={`transition-transform duration-300 ${atEnd ? "rotate-180" : ""}`}
+                  aria-hidden
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6" />
+                </svg>
+              </button>
+            </div>
           )}
         </div>
       </div>
