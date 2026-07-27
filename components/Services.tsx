@@ -145,7 +145,7 @@ function Card({ s, wide }: { s: (typeof services)[number]; wide?: boolean }) {
           {s.tags.map((t) => (
             <li
               key={t}
-              className="spec border border-paper/15 px-2 py-1 text-[0.58rem] text-steel transition-colors duration-300 group-hover:border-amp/40 group-hover:text-haze"
+              className="spec border border-paper/15 bg-ink/55 px-2 py-1 text-[0.58rem] text-steel backdrop-blur-sm transition-colors duration-300 group-hover:border-amp/40 group-hover:text-paper"
             >
               {t}
             </li>
