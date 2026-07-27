@@ -126,7 +126,7 @@ export default function Hero() {
           <motion.div style={reduce ? undefined : { x: bgMx, y: bgMy }} className="absolute -inset-4">
             <Image
               src="/img/hero-plant.webp"
-              alt="Combined-cycle power plant at dusk"
+              alt="ACE Engineering team overseeing containerized power generation units at an industrial site at sunset"
               fill
               priority
               className="object-cover object-center"
