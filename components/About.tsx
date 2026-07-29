@@ -92,11 +92,11 @@ export default function About() {
               </motion.div>
             </motion.div>
 
-            <div className="mt-4 border-l-2 border-amp bg-cloud px-5 py-4">
-              <p className="spec text-[0.6rem] text-slate">Built on industry experience</p>
+            <div className="mt-4 border border-linedark/60 bg-ink px-5 py-4">
+              <p className="spec text-[0.6rem] text-steel">Built on industry experience</p>
               <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
                 {experience.map((e) => (
-                  <li key={e} className="flex items-center gap-2 text-xs text-deep">
+                  <li key={e} className="flex items-center gap-2 text-xs text-haze">
                     <svg width="8" height="8" viewBox="0 0 16 16" aria-hidden>
                       <rect
                         x="3"
