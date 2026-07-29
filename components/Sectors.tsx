@@ -5,23 +5,27 @@ const sectors = [
   {
     name: "Data centers",
     detail: "Reliable and scalable infrastructure solutions that support uptime, resilience and rapid deployment",
+    img: "/img/sector-dc.webp",
     feature: true
   },
   {
     name: "Oil & gas",
-    detail: "Upstream, midstream and downstream operations supported through integrated energy, fabrication and offshore solutions"
+    detail: "Upstream, midstream and downstream operations supported through integrated energy, fabrication and offshore solutions",
+    img: "/img/sector-og.webp"
   },
   {
     name: "Mining",
-    detail: "Dependable infrastructure solutions for remote and demanding operating environments"
+    detail: "Dependable infrastructure solutions for remote and demanding operating environments",
+    img: "/img/sector-mining.webp"
   },
   {
     name: "Industrial & manufacturing",
-    detail: "Industrial growth supported through reliable power, electrical infrastructure and packaged equipment solutions"
+    detail: "Industrial growth supported through reliable power, electrical infrastructure and packaged equipment solutions",
+    img: "/img/sector-ind.webp"
   }
 ];
 
-/** Formal light section; the high-demand card carries imagery. */
+/** Formal light section; every card carries imagery, the high-demand card keeps its badge. */
 export default function Sectors() {
   return (
     <section id="sectors" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-cloud py-24 lg:py-32">
@@ -41,17 +45,21 @@ export default function Sectors() {
         <div className="mt-16 grid gap-4 md:grid-cols-2">
           {sectors.map((s, i) => (
             <Reveal key={s.name} delay={i * 0.06} y={18} className="h-full">
-              {s.feature ? (
-                <div className="group relative flex h-full min-h-[18rem] flex-col justify-between overflow-hidden border border-amp p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                  <Image
-                    src="/img/sector-dc.webp"
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 24rem, 100vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
-                  <div className="relative">
+              <div
+                className={`group relative flex h-full min-h-[18rem] flex-col justify-between overflow-hidden border p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                  s.feature ? "border-amp" : "border-hairline hover:border-amp/50"
+                }`}
+              >
+                <Image
+                  src={s.img}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 24rem, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
+                <div className="relative">
+                  {s.feature && (
                     <p
                       className="spec mb-3 flex items-center gap-2"
                       style={{
@@ -70,16 +78,11 @@ export default function Sectors() {
                       </span>
                       High demand
                     </p>
-                    <h3 className="display text-2xl text-paper">{s.name}</h3>
-                  </div>
-                  <p className="relative mt-4 text-sm text-haze">{s.detail}</p>
+                  )}
+                  <h3 className="display text-2xl text-paper">{s.name}</h3>
                 </div>
-              ) : (
-                <div className="flex h-full flex-col justify-between border border-hairline bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-amp/50 hover:shadow-lg">
-                  <h3 className="display text-2xl text-deep">{s.name}</h3>
-                  <p className="mt-4 text-sm text-slate">{s.detail}</p>
-                </div>
-              )}
+                <p className="relative mt-4 text-sm text-haze">{s.detail}</p>
+              </div>
             </Reveal>
           ))}
         </div>
