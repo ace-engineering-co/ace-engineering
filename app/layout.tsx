@@ -10,8 +10,14 @@ import "lenis/dist/lenis.css";
 import "./globals.css";
 import SmoothScroll from "../components/SmoothScroll";
 
+/* Vercel sets VERCEL_PROJECT_PRODUCTION_URL to the current production domain
+   (including custom domains), so absolute OG/social URLs survive domain changes. */
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ace-engineering.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title: "ACE Engineering — Integrated Infrastructure Solutions",
   description:
     "Integrated infrastructure solutions for critical industries. Development, packaging and delivery of energy, industrial and offshore infrastructure for data centers, oil & gas, mining and industrial markets.",
