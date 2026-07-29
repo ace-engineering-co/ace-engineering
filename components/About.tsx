@@ -71,34 +71,30 @@ export default function About() {
             </p>
           </Reveal>
 
-          {/* Image panel: offset amp frame + wipe reveal + floating readout */}
+          {/* Image panel: offset amp frame + wipe reveal, experience strip grounded below */}
           <div ref={panelRef} className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <div aria-hidden className="absolute -right-4 -top-4 h-full w-full border border-amp/40" />
+            <div aria-hidden className="absolute -right-4 -top-4 aspect-[5/4] w-full border border-amp/40" />
             <motion.div
               style={reduce ? undefined : { clipPath }}
-              className="relative aspect-[3/4] overflow-hidden lg:aspect-[4/5]"
+              className="relative aspect-[5/4] overflow-hidden border border-hairline bg-white shadow-sm"
             >
               <motion.div
                 style={reduce ? undefined : { scale: imgScale }}
                 className="absolute inset-0"
               >
                 <Image
-                  src="/img/about-tower.webp"
-                  alt="Row of containerized power modules at sunset — packaged infrastructure ACE Engineering delivers and operates"
+                  src="/img/about-ecosystem.webp"
+                  alt="Isometric diagram of an integrated power solution — generation, transformer, MV and LV switchgear, power house and grid distribution"
                   fill
                   sizes="(min-width: 1024px) 34rem, 28rem"
                   className="object-cover"
                 />
               </motion.div>
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
             </motion.div>
 
-            <div
-              className="absolute -left-5 bottom-10 border border-linedark/60 bg-ink/85 px-5 py-4 backdrop-blur-md"
-              style={{ animation: "floaty 8s ease-in-out infinite" }}
-            >
+            <div className="mt-4 border border-linedark/60 bg-ink px-5 py-4">
               <p className="spec text-[0.6rem] text-steel">Built on industry experience</p>
-              <ul className="mt-3 space-y-1.5">
+              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
                 {experience.map((e) => (
                   <li key={e} className="flex items-center gap-2 text-xs text-haze">
                     <svg width="8" height="8" viewBox="0 0 16 16" aria-hidden>
