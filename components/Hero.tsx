@@ -188,10 +188,10 @@ export default function Hero() {
             WIRES.map((w, i) => <Pulse key={w.d} path={w.d} dur={w.dur} delay={i * 1.7} />)}
         </motion.svg>
 
-        {/* Floating telemetry chips — near layer */}
+        {/* Floating telemetry chips — near layer (hidden for now, kept in code) */}
         <motion.div
           style={reduce ? undefined : { y: chipsY }}
-          className="absolute inset-0"
+          className="absolute inset-0 hidden"
           aria-hidden
         >
           <motion.div style={reduce ? undefined : { x: chipMx, y: chipMy }} className="absolute inset-0">
