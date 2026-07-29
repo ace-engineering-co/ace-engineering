@@ -16,10 +16,11 @@ export const metadata: Metadata = {
   description:
     "Integrated infrastructure solutions for critical industries. Development, packaging and delivery of energy, industrial and offshore infrastructure for data centers, oil & gas, mining and industrial markets.",
   openGraph: {
+    type: "website",
+    url: "/",
     title: "ACE Engineering — Integrated Infrastructure Solutions",
     description:
-      "Integrated infrastructure solutions for critical industries — power generation, electrical, packaged, offshore and project development.",
-    images: ["/img/hero-plant.webp"]
+      "Integrated infrastructure solutions for critical industries — power generation, electrical, packaged, offshore and project development."
   }
 };
 
