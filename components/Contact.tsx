@@ -11,6 +11,11 @@ const sectors = [
   "Oil & gas",
   "Mining",
   "Industrial & manufacturing",
+  "Utility",
+  "Rental",
+  "Marine",
+  "Commercial & Residential",
+  "Hospitality",
   "Other"
 ];
 
