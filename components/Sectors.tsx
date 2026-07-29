@@ -57,7 +57,7 @@ export default function Sectors() {
                   sizes="(min-width: 1024px) 24rem, 100vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-ink/30" />
                 <div className="relative">
                   {s.feature && (
                     <p
