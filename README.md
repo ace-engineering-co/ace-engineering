@@ -48,6 +48,8 @@ npm run typecheck  # TypeScript, no emit
 |---|---|---|
 | `RESEND_API_KEY` | Yes, for the contact form | API key from [Resend](https://resend.com) (Dashboard → API Keys) |
 | `CONTACT_FROM_EMAIL` | No | Sender for enquiry emails. Defaults to `ACE Engineering <noreply@ace-engineering.co>`. Must belong to a domain verified in Resend. |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Recommended | Cloudflare Turnstile site key — enables bot protection on the form. Build-time variable: redeploy after setting it. |
+| `TURNSTILE_SECRET_KEY` | Recommended | Cloudflare Turnstile secret key — its server-side pair. |
 
 Locally, put them in `.env.local` (gitignored). Without `RESEND_API_KEY`
 the site runs fine but form submissions return 503 and the visitor is
@@ -67,6 +69,25 @@ server-side, caps field lengths, and silently drops bot submissions via a
 honeypot field. The email template (`lib/contact-email.ts`) is
 table-based HTML with the ACE logo attached inline, so it renders
 correctly in all major email clients without loading remote images.
+
+### Bot protection (Cloudflare Turnstile)
+
+Three layers keep bot submissions out: a honeypot field, server-side
+validation, and [Cloudflare Turnstile](https://www.cloudflare.com/application-services/products/turnstile/)
+— a free, invisible CAPTCHA alternative (no puzzle for legitimate
+visitors, no cookie-consent implications).
+
+1. Cloudflare dashboard → Turnstile → **Add widget**; enter the site's
+   domain; widget mode **Managed** is recommended.
+2. Copy the **site key** into `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and the
+   **secret key** into `TURNSTILE_SECRET_KEY`, then redeploy (the site
+   key is embedded at build time).
+
+The Turnstile script loads only when a visitor scrolls near the form,
+and a challenge is shown only to suspicious traffic. Every submission's
+token is verified server-side; failures get 403. If the keys are not
+set, the check is skipped and the form still works — protection is
+opt-in, the form never breaks.
 
 ## Deployment
 

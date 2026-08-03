@@ -1,8 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Reveal from "./Reveal";
 import { site, waLink } from "../lib/site.config";
+
+/* Cloudflare Turnstile bot protection. Inlined at build time; when unset the
+   widget is skipped entirely and the form still works (honeypot + server
+   validation remain). */
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+      reset: (id?: string) => void;
+    };
+    __onTurnstileLoad?: () => void;
+  }
+}
 
 /* Loaded lazily — see PhoneField.tsx. The placeholder mirrors the final
    input's box so the swap causes no layout shift. */
@@ -78,6 +93,47 @@ export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [honeypot, setHoneypot] = useState("");
   const [phoneValid, setPhoneValid] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const widgetId = useRef<string | undefined>(undefined);
+
+  /* Load the Turnstile script only when the contact section approaches the
+     viewport, then render an interaction-only widget (visible solely when
+     Cloudflare decides a challenge is needed). */
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return;
+    const section = document.getElementById("contact");
+    if (!section) return;
+    const render = () => {
+      if (!turnstileRef.current || widgetId.current !== undefined || !window.turnstile) return;
+      widgetId.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        appearance: "interaction-only",
+        callback: (token: string) => setCaptchaToken(token),
+        "expired-callback": () => setCaptchaToken(""),
+        "error-callback": () => setCaptchaToken("")
+      });
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        if (window.turnstile) {
+          render();
+          return;
+        }
+        window.__onTurnstileLoad = render;
+        const s = document.createElement("script");
+        s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=__onTurnstileLoad";
+        s.async = true;
+        s.defer = true;
+        document.head.appendChild(s);
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const fieldError = (k: keyof Form): string => {
     if (k === "phone")
@@ -109,11 +165,14 @@ export default function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, website: honeypot })
+        body: JSON.stringify({ ...form, website: honeypot, captchaToken })
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setStatus("sent");
     } catch {
+      // Tokens are single-use — get a fresh one before the user retries
+      setCaptchaToken("");
+      window.turnstile?.reset(widgetId.current);
       setStatus("error");
     }
   };
@@ -312,6 +371,9 @@ export default function Contact() {
                 <Err k="message" />
               </div>
             </div>
+
+            {/* Turnstile mounts here; visible only if Cloudflare challenges */}
+            <div ref={turnstileRef} className="mt-4 empty:mt-0" />
 
             <button
               type="submit"
