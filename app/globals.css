@@ -118,3 +118,24 @@ body {
   0%, 100% { box-shadow: 0 0 0 0 rgba(127, 166, 217, 0.45); }
   50% { box-shadow: 0 0 26px 6px rgba(127, 166, 217, 0.45); }
 }
+
+/* Hero entrance — pure CSS (not framer) so the headline and intro paint as
+   soon as styles load instead of waiting for JS hydration; the intro
+   paragraph is the page's LCP element. The reduced-motion block above
+   completes these instantly. */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-line {
+  from { transform: translateY(112%); filter: blur(6px); }
+  to { transform: translateY(0); filter: blur(0); }
+}
+.hero-enter {
+  opacity: 0;
+  animation: hero-rise 0.5s ease-out forwards;
+}
+.hero-line {
+  transform: translateY(112%);
+  animation: hero-line 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}

@@ -31,7 +31,7 @@ export default function Sectors() {
     <section id="sectors" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-cloud py-24 lg:py-32">
       <div className="mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
-          <p className="spec text-amp">Industries</p>
+          <p className="spec text-ampdeep">Industries</p>
           <h2 className="display mt-4 max-w-3xl text-4xl text-deep sm:text-5xl md:text-6xl">
             Built for critical industries.
           </h2>

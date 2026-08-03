@@ -221,47 +221,30 @@ export default function Hero() {
           style={reduce ? undefined : { y: contentY, scale: contentScale, opacity: contentOpacity }}
           className="relative mx-auto w-full max-w-wrap px-5 pb-24 pt-40 lg:px-8"
         >
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="spec mb-6 text-amp"
-          >
+          <p className="spec hero-enter mb-6 text-amp" style={{ animationDelay: "0.1s" }}>
             ACE Engineering
-          </motion.p>
+          </p>
 
           <h1 className="display max-w-4xl text-5xl text-paper sm:text-6xl md:text-7xl lg:text-8xl">
             {["Integrated", "infrastructure", "solutions."].map((line, i) => (
               <span key={line} className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={reduce ? false : { y: "112%", filter: "blur(6px)" }}
-                  animate={{ y: 0, filter: "blur(0px)" }}
-                  transition={{ duration: 0.9, delay: 0.2 + i * 0.13, ease: [0.22, 1, 0.36, 1] }}
-                >
+                <span className="hero-line block" style={{ animationDelay: `${0.1 + i * 0.1}s` }}>
                   {i === 2 ? <span className="text-amp">{line}</span> : line}
-                </motion.span>
+                </span>
               </span>
             ))}
           </h1>
 
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.75 }}
-            className="mt-6 max-w-xl text-lg text-haze"
+          <p
+            className="hero-enter mt-6 max-w-xl text-lg text-haze"
+            style={{ animationDelay: "0.35s" }}
           >
             For critical industries — data centers, oil &amp; gas, mining and
             industrial — we turn complex requirements into reliable, practical
             and commercially viable solutions.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="mt-10 flex flex-wrap gap-4"
-          >
+          <div className="hero-enter mt-10 flex flex-wrap gap-4" style={{ animationDelay: "0.5s" }}>
             <a
               href="#services"
               className="spec bg-amp px-7 py-4 font-medium text-ink transition-colors hover:bg-paper"
@@ -274,14 +257,12 @@ export default function Hero() {
             >
               Request a consultation
             </a>
-          </motion.div>
+          </div>
 
           {/* Scroll cue — thin charging line */}
-          <motion.div
-            initial={reduce ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.4 }}
-            className="mt-16 flex items-center gap-4 text-steel"
+          <div
+            className="hero-enter mt-16 flex items-center gap-4 text-steel"
+            style={{ animationDelay: "1s" }}
           >
             <span className="relative block h-10 w-px overflow-hidden bg-paper/15">
               <motion.span
@@ -291,7 +272,7 @@ export default function Hero() {
               />
             </span>
             <span className="spec">Scroll</span>
-          </motion.div>
+          </div>
         </motion.div>
       </section>
     </div>

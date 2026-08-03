@@ -54,7 +54,7 @@ export default function About() {
       <div className="mx-auto max-w-wrap px-5 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>
-            <p className="spec text-amp">Company</p>
+            <p className="spec text-ampdeep">Company</p>
             <h2 className="display mt-4 text-4xl text-deep sm:text-5xl md:text-6xl">
               Practical infrastructure solutions.
             </h2>

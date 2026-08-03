@@ -1,10 +1,22 @@
 "use client";
 import { useState } from "react";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import flags from "react-phone-number-input/flags";
-import "react-phone-number-input/style.css";
+import dynamic from "next/dynamic";
 import Reveal from "./Reveal";
 import { site, waLink } from "../lib/site.config";
+
+/* Loaded lazily — see PhoneField.tsx. The placeholder mirrors the final
+   input's box so the swap causes no layout shift. */
+const PhoneField = dynamic(() => import("./PhoneField"), {
+  ssr: false,
+  loading: () => (
+    <input
+      disabled
+      placeholder="+971"
+      aria-label="Mobile number (loading)"
+      className="w-full border border-hairline bg-white px-4 py-3 text-sm text-deep placeholder-slate/50 outline-none"
+    />
+  )
+});
 
 const sectors = [
   "Data centers",
@@ -45,16 +57,19 @@ const initial: Form = {
   message: ""
 };
 
-/** Field-level validators — return an error string or empty. */
+/** Field-level validators — return an error string or empty. Phone validity
+    is reported by PhoneField (which owns the libphonenumber dependency). */
 const validators: Partial<Record<keyof Form, (v: string) => string>> = {
   name: (v) => (v.trim().length >= 2 ? "" : "Please enter your full name."),
   company: (v) => (v.trim().length >= 2 ? "" : "Please enter your company name."),
   email: (v) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? "" : "Please enter a valid business email.",
-  phone: (v) => (v && isValidPhoneNumber(v) ? "" : "Please enter a valid mobile number."),
   sector: (v) => (v ? "" : "Please select a sector."),
   message: (v) => (v.trim().length >= 20 ? "" : "Please describe the requirement (min. 20 characters).")
 };
+
+/** Validation order for focusing the first invalid field on submit. */
+const REQUIRED: (keyof Form)[] = ["name", "company", "email", "phone", "sector", "message"];
 
 export default function Contact() {
   const [form, setForm] = useState<Form>(initial);
@@ -62,12 +77,18 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [honeypot, setHoneypot] = useState("");
+  const [phoneValid, setPhoneValid] = useState(false);
+
+  const fieldError = (k: keyof Form): string => {
+    if (k === "phone")
+      return form.phone && phoneValid ? "" : "Please enter a valid mobile number.";
+    const fn = validators[k];
+    return fn ? fn(form[k]) : "";
+  };
 
   const errorFor = (k: keyof Form): string => {
-    const fn = validators[k];
-    if (!fn) return "";
     if (!touched[k] && !submitted) return "";
-    return fn(form[k]);
+    return fieldError(k);
   };
 
   const set = (k: keyof Form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -78,7 +99,7 @@ export default function Contact() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    const firstInvalid = (Object.keys(validators) as (keyof Form)[]).find((k) => validators[k]!(form[k]));
+    const firstInvalid = REQUIRED.find((k) => fieldError(k));
     if (firstInvalid) {
       document.getElementsByName(firstInvalid)[0]?.focus();
       return;
@@ -121,7 +142,7 @@ export default function Contact() {
     <section id="contact" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-white py-24 lg:py-32">
       <div className="mx-auto grid max-w-wrap gap-14 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <Reveal>
-          <p className="spec text-amp">Contact</p>
+          <p className="spec text-ampdeep">Contact</p>
           <h2 className="display mt-4 text-4xl text-deep sm:text-5xl md:text-6xl">
             Request a consultation.
           </h2>
@@ -237,23 +258,15 @@ export default function Contact() {
 
               <div className="sm:col-span-2">
                 <label htmlFor="c-phone" className={label}>Mobile *</label>
-                <PhoneInput
-                  international
-                  defaultCountry="AE"
-                  flags={flags}
-                  countryCallingCodeEditable={false}
-                  value={form.phone || undefined}
-                  onChange={(v) => setForm((f) => ({ ...f, phone: v || "" }))}
-                  onBlur={blur("phone")}
-                  numberInputProps={{
-                    id: "c-phone",
-                    name: "phone",
-                    required: true,
-                    autoComplete: "tel",
-                    ...ariaErr("phone"),
-                    className: field("phone")
+                <PhoneField
+                  value={form.phone}
+                  invalid={!!errorFor("phone")}
+                  inputClassName={field("phone")}
+                  onChange={(v, isValid) => {
+                    setForm((f) => ({ ...f, phone: v }));
+                    setPhoneValid(isValid);
                   }}
-                  className={errorFor("phone") ? "phone-invalid" : undefined}
+                  onBlur={blur("phone")}
                 />
                 <Err k="phone" />
               </div>

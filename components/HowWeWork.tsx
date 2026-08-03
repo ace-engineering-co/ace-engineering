@@ -29,7 +29,7 @@ export default function HowWeWork() {
     <section id="process" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-cloud py-24 lg:py-32">
       <div className="mx-auto max-w-wrap px-5 lg:px-8">
         <Reveal>
-          <p className="spec text-amp">How we work</p>
+          <p className="spec text-ampdeep">How we work</p>
           <h2 className="display mt-4 max-w-3xl text-4xl text-deep sm:text-5xl md:text-6xl">
             A structured approach to delivery.
           </h2>
@@ -39,7 +39,7 @@ export default function HowWeWork() {
           {steps.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.08} y={18} className="h-full">
               <div className="flex h-full flex-col border-l-2 border-amp bg-white p-6">
-                <p className="spec text-amp">{String(i + 1).padStart(2, "0")}</p>
+                <p className="spec text-ampdeep">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="display mt-4 text-xl text-deep">{s.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate">{s.body}</p>
               </div>
