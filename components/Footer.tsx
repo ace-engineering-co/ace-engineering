@@ -1,5 +1,6 @@
 import { site, waLink } from "../lib/site.config";
 
+/** Floating WhatsApp button (bottom-right, all viewports) — opens waLink(). */
 export function WhatsAppFab() {
   return (
     <a
@@ -18,6 +19,7 @@ export function WhatsAppFab() {
   );
 }
 
+/** Minimal ink footer: logo lockup + copyright, year computed at render. */
 export default function Footer() {
   return (
     <footer className="relative z-10 bg-ink py-10">

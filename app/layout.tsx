@@ -9,22 +9,49 @@ import "@fontsource/ibm-plex-mono/500.css";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import SmoothScroll from "../components/SmoothScroll";
+import { siteUrl } from "../lib/seo";
 
-/* Vercel sets VERCEL_PROJECT_PRODUCTION_URL to the current production domain
-   (including custom domains), so absolute OG/social URLs survive domain changes. */
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "http://localhost:3000";
+const TITLE = "ACE Engineering — Integrated Infrastructure Solutions";
+const DESCRIPTION =
+  "Integrated infrastructure solutions for critical industries. UAE-based development, packaging and delivery of power generation, electrical, packaged and offshore infrastructure for data centers, oil & gas, mining and industrial markets.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "ACE Engineering — Integrated Infrastructure Solutions",
-  description:
-    "Integrated infrastructure solutions for critical industries. Development, packaging and delivery of energy, industrial and offshore infrastructure for data centers, oil & gas, mining and industrial markets.",
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: "ACE Engineering",
+  keywords: [
+    "infrastructure solutions",
+    "power generation",
+    "gas generator sets",
+    "diesel generator sets",
+    "gas turbines",
+    "electrical infrastructure",
+    "LV switchgear",
+    "MV switchgear",
+    "packaged infrastructure",
+    "e-houses",
+    "modular equipment packages",
+    "offshore infrastructure",
+    "liftboats",
+    "jack-up barges",
+    "offshore support vessels",
+    "project development",
+    "data center infrastructure",
+    "oil and gas",
+    "mining infrastructure",
+    "UAE",
+    "Ras Al Khaimah",
+    "Middle East"
+  ],
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: "/",
-    title: "ACE Engineering — Integrated Infrastructure Solutions",
+    siteName: "ACE Engineering",
+    locale: "en_US",
+    title: TITLE,
     description:
       "Integrated infrastructure solutions for critical industries — power generation, electrical, packaged, offshore and project development.",
     images: [
@@ -39,7 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ACE Engineering — Integrated Infrastructure Solutions",
+    title: TITLE,
     description:
       "Integrated infrastructure solutions for critical industries — power generation, electrical, packaged, offshore and project development.",
     images: ["/og-image.png"]

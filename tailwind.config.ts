@@ -19,7 +19,7 @@ const config: Config = {
         deep: "#05162D",
         /* accent — steel/ice blue drawn from the navy brand mark */
         amp: "#7FA6D9",
-        ampdeep: "#54749E"
+        ampdeep: "#4E6D96"
       },
       fontFamily: {
         display: ["'Barlow Condensed'", "sans-serif"],
