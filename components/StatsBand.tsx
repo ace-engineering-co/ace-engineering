@@ -70,6 +70,9 @@ export default function StatsBand() {
         </div>
       </div>
 
+      {/* sr-only heading keeps the h2→h3 document outline intact — visually the
+          marquee acts as this section's title */}
+      <h2 className="sr-only">Why ACE Engineering</h2>
       <motion.div
         style={reduce ? undefined : { y }}
         className="relative mx-auto grid max-w-wrap grid-cols-1 gap-x-8 gap-y-12 px-5 py-24 sm:grid-cols-2 md:grid-cols-4 lg:px-8"

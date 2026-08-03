@@ -50,6 +50,7 @@ npm run typecheck  # TypeScript, no emit
 | `CONTACT_FROM_EMAIL` | No | Sender for enquiry emails. Defaults to `ACE Engineering <noreply@ace-engineering.co>`. Must belong to a domain verified in Resend. |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Recommended | Cloudflare Turnstile site key — enables bot protection on the form. Build-time variable: redeploy after setting it. |
 | `TURNSTILE_SECRET_KEY` | Recommended | Cloudflare Turnstile secret key — its server-side pair. |
+| `NEXT_PUBLIC_SITE_URL` | Only off-Vercel | Canonical site origin (e.g. `https://www.ace-engineering.co`) used for metadata, sitemap, robots and structured data. On Vercel it is derived automatically from the production domain. |
 
 Locally, put them in `.env.local` (gitignored). Without `RESEND_API_KEY`
 the site runs fine but form submissions return 503 and the visitor is
