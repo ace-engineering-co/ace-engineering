@@ -17,13 +17,10 @@ Open http://localhost:3000
 2. vercel.com → New Project → import the repo → Deploy (zero config needed)
 3. Add the custom domain in Vercel → Settings → Domains when ready
 
-## Remaining edit checklist
+## Editing content
 
-Contact details live in **one file**: `lib/site.config.ts`
-
-- [ ] WhatsApp number (digits only, international format)
-- [ ] Contact email + affiliate/partners email
-- [ ] Phone, office location and LinkedIn URL
+Contact details (WhatsApp, emails, phone, registered office address) live in
+**one file**: `lib/site.config.ts`.
 
 Site copy comes from the client's wording document (integrated). Sections, in
 page order: `Hero`, `Services` (5 solutions + capability tags), `StatsBand`
@@ -32,14 +29,8 @@ page order: `Hero`, `Services` (5 solutions + capability tags), `StatsBand`
 
 Brand assets live in `public/brand/` — the primary lockup from the client's
 logo package as vector SVG in navy (`#05162D`), white and black. Per the
-client, only the primary lockup is used; the favicon (`app/icon.svg`) inlines
+client, only the primary lockup is used; the favicon (`app/icon.png`) uses
 the A-peak mark from the same artwork.
-
-Imagery still to swap:
-
-- [x] `components/Services.tsx` — Offshore infrastructure card now uses the
-      client's offshore platform photo (`public/img/svc-03.webp`)
-- [ ] `public/img/hero-plant.webp` — swap if the client wants a different hero
 
 ## Forms
 
