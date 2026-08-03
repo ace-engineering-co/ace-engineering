@@ -309,7 +309,7 @@ export default function Contact() {
               </div>
               <div>
                 <label htmlFor="c-company" className={label}>Company *</label>
-                <input id="c-company" name="company" required autoComplete="organization" placeholder="Company / organisation"
+                <input id="c-company" name="company" required autoComplete="organization" placeholder="Company / organization"
                   {...ariaErr("company")}
                   className={field("company")} value={form.company} onChange={set("company")} onBlur={blur("company")} />
                 <Err k="company" />
