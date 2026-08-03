@@ -43,6 +43,21 @@ export default function Affiliate() {
         className="absolute -right-32 -top-32 h-96 w-96 rounded-full opacity-25 mix-blend-screen"
         style={{ background: "radial-gradient(closest-side, #7FA6D9, transparent 70%)", filter: "blur(40px)" }}
       />
+      <div className="absolute inset-y-0 right-0 w-full sm:w-2/3 lg:w-1/2" aria-hidden>
+        <Image
+          src="/img/affiliate-handshake.webp"
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className="object-cover object-center opacity-[0.16] mix-blend-luminosity"
+          style={{
+            maskImage:
+              "linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 95%)",
+            WebkitMaskImage:
+              "linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 95%)"
+          }}
+        />
+      </div>
       <div className="grain" />
 
       <div className="relative mx-auto max-w-wrap px-5 lg:px-8">
