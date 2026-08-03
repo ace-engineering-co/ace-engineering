@@ -32,14 +32,31 @@ logo package as vector SVG in navy (`#05162D`), white and black. Per the
 client, only the primary lockup is used; the favicon (`app/icon.png`) uses
 the A-peak mark from the same artwork.
 
-## Forms
+## Contact form
 
-Both forms (contact + affiliate) currently open a pre-filled email in the
-visitor's mail client (`mailto:`) — zero backend, works everywhere, fine for v1.
+The consultation form posts to `app/api/contact/route.ts`, which delivers a
+branded HTML email (navy header + ACE logo) to `site.email` via
+[Resend](https://resend.com), with Reply-To set to the enquirer so the team
+can respond directly from their inbox.
 
-To upgrade to silent email delivery later: add a [Resend](https://resend.com)
-API key and a small `/app/api/contact/route.ts` handler, or point the form
-`action` at [FormSubmit](https://formsubmit.co) / [Formspree](https://formspree.io).
+Setup:
+
+1. Create a Resend account and verify the `ace-engineering.co` sending domain
+   (Resend dashboard → Domains).
+2. Create an API key (Resend dashboard → API Keys).
+3. Add environment variables — on Vercel: Project → Settings → Environment
+   Variables; locally: `.env.local` (gitignored):
+   - `RESEND_API_KEY` — required
+   - `CONTACT_FROM_EMAIL` — optional; defaults to
+     `ACE Engineering <noreply@ace-engineering.co>`. Must be an address on a
+     verified domain (use `onboarding@resend.dev` while testing).
+
+The route validates server-side (mirroring the client rules, plus length
+caps) and includes a honeypot field that silently drops bot submissions. If
+the API key is missing, the endpoint returns 503 and the form shows a
+fallback message with the direct email address.
+
+The affiliate section links to a pre-filled `mailto:` — no backend needed.
 
 ## Design system
 

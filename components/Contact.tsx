@@ -60,6 +60,8 @@ export default function Contact() {
   const [form, setForm] = useState<Form>(initial);
   const [touched, setTouched] = useState<Partial<Record<keyof Form, boolean>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [honeypot, setHoneypot] = useState("");
 
   const errorFor = (k: keyof Form): string => {
     const fn = validators[k];
@@ -73,7 +75,7 @@ export default function Contact() {
 
   const blur = (k: keyof Form) => () => setTouched((t) => ({ ...t, [k]: true }));
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
     const firstInvalid = (Object.keys(validators) as (keyof Form)[]).find((k) => validators[k]!(form[k]));
@@ -81,22 +83,18 @@ export default function Contact() {
       document.getElementsByName(firstInvalid)[0]?.focus();
       return;
     }
-    const lines = [
-      `Name: ${form.name}`,
-      `Job title: ${form.title || "—"}`,
-      `Company: ${form.company}`,
-      `Email: ${form.email}`,
-      `Mobile: ${form.phone}`,
-      `Sector: ${form.sector}`,
-      `Power requirement: ${form.load || "—"}`,
-      `Project location: ${form.location || "—"}`,
-      "",
-      "Requirement:",
-      form.message
-    ];
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-      `Enquiry — ${form.company} (${form.sector})`
-    )}&body=${encodeURIComponent(lines.join("\n")).replace(/%0A/g, "%0D%0A")}`;
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, website: honeypot })
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   };
 
   const base =
@@ -185,7 +183,30 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.1}>
+          {status === "sent" ? (
+            <div
+              role="status"
+              className="flex h-full min-h-[24rem] flex-col items-center justify-center border border-hairline bg-cloud p-10 text-center"
+            >
+              <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-amp">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7FA6D9" strokeWidth="2.5" aria-hidden>
+                  <path d="M4 12.5l5 5L20 6.5" />
+                </svg>
+              </span>
+              <h3 className="display mt-6 text-3xl text-deep">Enquiry received.</h3>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate">
+                Thank you — your consultation request has been sent to our team.
+                We will get back to you shortly.
+              </p>
+            </div>
+          ) : (
           <form onSubmit={submit} noValidate className="border border-hairline bg-cloud p-8">
+            {/* Honeypot — hidden from real users, bots fill it and get dropped */}
+            <div aria-hidden className="absolute h-0 w-0 overflow-hidden">
+              <label htmlFor="c-website">Website</label>
+              <input id="c-website" name="website" type="text" tabIndex={-1} autoComplete="off"
+                value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+            </div>
             <div className="grid gap-x-4 gap-y-5 sm:grid-cols-2">
               <div>
                 <label htmlFor="c-name" className={label}>Full name *</label>
@@ -281,11 +302,23 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="spec mt-6 w-full bg-amp py-4 font-medium text-ink transition-colors hover:bg-deep hover:text-paper"
+              disabled={status === "sending"}
+              className="spec mt-6 w-full bg-amp py-4 font-medium text-ink transition-colors hover:bg-deep hover:text-paper disabled:cursor-wait disabled:opacity-60"
             >
-              Submit
+              {status === "sending" ? "Sending…" : "Submit"}
             </button>
+            {status === "error" && (
+              <p role="alert" className="mt-4 text-center text-sm text-red-500">
+                Something went wrong sending your enquiry. Please try again, or
+                email us directly at{" "}
+                <a href={`mailto:${site.email}`} className="underline">
+                  {site.email}
+                </a>
+                .
+              </p>
+            )}
           </form>
+          )}
         </Reveal>
       </div>
     </section>
