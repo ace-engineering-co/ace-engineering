@@ -9,6 +9,11 @@ const links: { href: string; label: string; highlight?: boolean }[] = [
   { href: "#affiliate", label: "Become an Affiliate Partner", highlight: true }
 ];
 
+/**
+ * Fixed top navigation. Transparent over the hero, gains a blurred ink
+ * backdrop after 24px of scroll. Desktop shows inline anchor links; mobile
+ * collapses into a burger menu that also carries the consultation CTA.
+ */
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);

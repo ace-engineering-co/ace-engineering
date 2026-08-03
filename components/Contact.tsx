@@ -86,6 +86,13 @@ const validators: Partial<Record<keyof Form, (v: string) => string>> = {
 /** Validation order for focusing the first invalid field on submit. */
 const REQUIRED: (keyof Form)[] = ["name", "company", "email", "phone", "sector", "message"];
 
+/**
+ * Consultation form + contact details. Client-validated per field (errors
+ * appear on blur or submit), then POSTs JSON to /api/contact which delivers
+ * the enquiry by email. Spam control: honeypot + lazily-mounted Cloudflare
+ * Turnstile. On success the form is replaced by a confirmation panel; on
+ * failure an inline message offers the direct email address.
+ */
 export default function Contact() {
   const [form, setForm] = useState<Form>(initial);
   const [touched, setTouched] = useState<Partial<Record<keyof Form, boolean>>>({});

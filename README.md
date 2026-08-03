@@ -6,6 +6,16 @@ infrastructure, packaged solutions, offshore assets and project
 development). The site presents the company's solutions, sectors, process
 and affiliate programme, and delivers consultation enquiries by email.
 
+## Documentation
+
+| Document | Read it when… |
+|---|---|
+| This README | Setting up, deploying, or getting oriented |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Working on the code — how the site is put together and why |
+| [docs/CONTENT-GUIDE.md](docs/CONTENT-GUIDE.md) | Changing text, images, contact details or sections |
+| [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Operating the live site — env vars, runbook, key rotation, rollback |
+| [docs/SECURITY.md](docs/SECURITY.md) | Reviewing or extending the security posture |
+
 ## Tech stack
 
 | Layer | Technology |
