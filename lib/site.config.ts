@@ -14,6 +14,11 @@ export const site = {
   phone: "+971 56 709 9865", // TODO: replace with the real UAE number
   phoneHref: "tel:+971567099865", // TODO: keep in sync with `phone`
   location: "United Arab Emirates",
+  // Registered office address, grouped for display (each entry renders as a line)
+  addressLines: [
+    "SBAM0037, Compass Building, Al Shohada Road",
+    "Al Hamra Industrial Zone-FZ, Ras Al Khaimah, United Arab Emirates"
+  ],
   linkedin: "#" // TODO: add when available
 };
 

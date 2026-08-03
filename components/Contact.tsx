@@ -167,7 +167,13 @@ export default function Contact() {
             </div>
             <div>
               <dt className="spec text-slate/70">Offices</dt>
-              <dd className="mt-1 text-lg text-deep">{site.location}</dd>
+              <dd className="mt-1 text-base leading-relaxed text-deep">
+                {site.addressLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </dd>
             </div>
           </dl>
         </Reveal>

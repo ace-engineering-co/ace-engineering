@@ -37,8 +37,8 @@ the A-peak mark from the same artwork.
 
 Imagery still to swap:
 
-- [ ] `components/Services.tsx` — Offshore infrastructure card needs a
-      marine/offshore photo (marked `TODO`); no suitable image exists yet
+- [x] `components/Services.tsx` — Offshore infrastructure card now uses the
+      client's offshore platform photo (`public/img/svc-03.webp`)
 - [ ] `public/img/hero-plant.webp` — swap if the client wants a different hero
 
 ## Forms
