@@ -56,7 +56,9 @@ export default function Nav() {
 
         <button
           className="text-paper lg:hidden"
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen(!open)}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -66,7 +68,7 @@ export default function Nav() {
       </div>
 
       {open && (
-        <nav className="border-t border-linedark/50 bg-ink/95 px-5 pb-6 pt-2 backdrop-blur-md lg:hidden">
+        <nav id="mobile-menu" className="border-t border-linedark/50 bg-ink/95 px-5 pb-6 pt-2 backdrop-blur-md lg:hidden">
           {links.map((l) => (
             <a
               key={l.href}

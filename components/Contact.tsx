@@ -104,9 +104,15 @@ export default function Contact() {
   const field = (k: keyof Form) =>
     `${base} ${errorFor(k) ? "border-red-400 focus:border-red-500" : "border-hairline focus:border-amp"}`;
 
+  /** Props linking a field to its error message for screen readers. */
+  const ariaErr = (k: keyof Form) => ({
+    "aria-invalid": !!errorFor(k),
+    "aria-describedby": errorFor(k) ? `c-err-${k}` : undefined
+  });
+
   const Err = ({ k }: { k: keyof Form }) =>
     errorFor(k) ? (
-      <p role="alert" className="mt-1.5 text-xs text-red-500">
+      <p id={`c-err-${k}`} role="alert" className="mt-1.5 text-xs text-red-500">
         {errorFor(k)}
       </p>
     ) : null;
@@ -184,7 +190,7 @@ export default function Contact() {
               <div>
                 <label htmlFor="c-name" className={label}>Full name *</label>
                 <input id="c-name" name="name" required autoComplete="name" placeholder="Your full name"
-                  aria-invalid={!!errorFor("name")}
+                  {...ariaErr("name")}
                   className={field("name")} value={form.name} onChange={set("name")} onBlur={blur("name")} />
                 <Err k="name" />
               </div>
@@ -196,14 +202,14 @@ export default function Contact() {
               <div>
                 <label htmlFor="c-company" className={label}>Company *</label>
                 <input id="c-company" name="company" required autoComplete="organization" placeholder="Company / organisation"
-                  aria-invalid={!!errorFor("company")}
+                  {...ariaErr("company")}
                   className={field("company")} value={form.company} onChange={set("company")} onBlur={blur("company")} />
                 <Err k="company" />
               </div>
               <div>
                 <label htmlFor="c-email" className={label}>Business email *</label>
                 <input id="c-email" name="email" type="email" required autoComplete="email" placeholder="name@company.com"
-                  aria-invalid={!!errorFor("email")}
+                  {...ariaErr("email")}
                   className={field("email")} value={form.email} onChange={set("email")} onBlur={blur("email")} />
                 <Err k="email" />
               </div>
@@ -223,7 +229,7 @@ export default function Contact() {
                     name: "phone",
                     required: true,
                     autoComplete: "tel",
-                    "aria-invalid": !!errorFor("phone"),
+                    ...ariaErr("phone"),
                     className: field("phone")
                   }}
                   className={errorFor("phone") ? "phone-invalid" : undefined}
@@ -234,7 +240,7 @@ export default function Contact() {
               <div>
                 <label htmlFor="c-sector" className={label}>Sector *</label>
                 <select id="c-sector" name="sector" required
-                  aria-invalid={!!errorFor("sector")}
+                  {...ariaErr("sector")}
                   className={`${field("sector")} ${form.sector ? "" : "text-slate/50"}`}
                   value={form.sector} onChange={set("sector")} onBlur={blur("sector")}>
                   <option value="" disabled>Select sector</option>
@@ -266,7 +272,7 @@ export default function Contact() {
                 <label htmlFor="c-message" className={label}>Requirement *</label>
                 <textarea id="c-message" name="message" required rows={5}
                   placeholder="Scope, requirements, timeline and any constraints…"
-                  aria-invalid={!!errorFor("message")}
+                  {...ariaErr("message")}
                   className={`${field("message")} resize-none`}
                   value={form.message} onChange={set("message")} onBlur={blur("message")} />
                 <Err k="message" />
