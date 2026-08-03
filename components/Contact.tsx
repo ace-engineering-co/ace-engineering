@@ -166,7 +166,7 @@ export default function Contact() {
               </dd>
             </div>
             <div>
-              <dt className="spec text-slate/70">Offices</dt>
+              <dt className="spec text-slate/70">Office</dt>
               <dd className="mt-1 text-base leading-relaxed text-deep">
                 {site.addressLines.map((line) => (
                   <span key={line} className="block">
