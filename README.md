@@ -73,7 +73,8 @@ breaks.
    (Dashboard → Domains → add the DNS records Resend provides).
 2. Create an API key and set `RESEND_API_KEY` in your hosting platform.
 3. Inquiries are delivered to the address in `lib/site.config.ts`
-   (`site.email`), with Reply-To set to the inquirer.
+   (`site.email`), with Reply-To set to the inquirer. The inquirer
+   receives a formal automated acknowledgment email in the same branding.
 
 The API route (`app/api/contact/route.ts`) validates all input
 server-side, caps field lengths, and silently drops bot submissions via a

@@ -104,13 +104,17 @@ app/api/contact/route.ts (serverless)
   ├─ validate + length-cap all fields → 400
   ├─ Turnstile siteverify → 403 (fail-closed; skipped if key unset)
   ├─ RESEND_API_KEY missing → 503
-  └─ Resend send → 200, or 502 on provider error
+  ├─ Resend send (internal notification) → 502 on provider error
+  └─ Resend send (acknowledgment to the inquirer) — best-effort:
+     failures are logged, never fail the submission
 
 lib/contact-email.ts   – HTML + text template (all input HTML-escaped)
 lib/email-logo.ts      – logo PNG as base64, attached inline (cid)
 ```
 
-The email's Reply-To is the inquirer's address, so the team replies
+`lib/contact-email.ts` renders both emails — the internal notification
+and the formal acknowledgment. The internal email's Reply-To is the
+inquirer's address, so the team replies
 directly from their inbox.
 
 `PhoneField.tsx` exists purely for performance: react-phone-number-input

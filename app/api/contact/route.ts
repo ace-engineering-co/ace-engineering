@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { site } from "../../../lib/site.config";
-import { renderContactEmail, type ContactSubmission } from "../../../lib/contact-email";
+import {
+  renderContactEmail,
+  renderConfirmationEmail,
+  type ContactSubmission
+} from "../../../lib/contact-email";
 import { EMAIL_LOGO_PNG_BASE64 } from "../../../lib/email-logo";
 
 /**
@@ -99,29 +103,47 @@ export async function POST(req: Request) {
   }
 
   const { subject, html, text } = renderContactEmail(data);
+  const from = process.env.CONTACT_FROM_EMAIL || FROM_DEFAULT;
+  const logoAttachment = {
+    filename: "ace-logo.png",
+    content: EMAIL_LOGO_PNG_BASE64,
+    contentId: "ace-logo",
+    contentType: "image/png"
+  };
 
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
-      from: process.env.CONTACT_FROM_EMAIL || FROM_DEFAULT,
+      from,
       to: [site.email],
       replyTo: data.email,
       subject,
       html,
       text,
-      attachments: [
-        {
-          filename: "ace-logo.png",
-          content: EMAIL_LOGO_PNG_BASE64,
-          contentId: "ace-logo",
-          contentType: "image/png"
-        }
-      ]
+      attachments: [logoAttachment]
     });
     if (error) {
       console.error("Resend error:", error);
       return NextResponse.json({ error: "The inquiry could not be sent." }, { status: 502 });
     }
+
+    // Automated acknowledgment to the inquirer. Best-effort: a failure here
+    // must never fail the submission — the team already has the inquiry.
+    try {
+      const confirmation = renderConfirmationEmail(data);
+      const { error: confirmError } = await resend.emails.send({
+        from,
+        to: [data.email],
+        subject: confirmation.subject,
+        html: confirmation.html,
+        text: confirmation.text,
+        attachments: [logoAttachment]
+      });
+      if (confirmError) console.error("Confirmation email error:", confirmError);
+    } catch (err) {
+      console.error("Confirmation email failed:", err);
+    }
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Contact form send failed:", err);

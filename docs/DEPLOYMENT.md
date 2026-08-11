@@ -76,6 +76,13 @@ never fully lost. Diagnose in order:
    (SPF/DKIM, in Resend → Domains) must remain in place at the DNS host.
 3. The recipient address is `site.email` in `lib/site.config.ts`.
 
+Each submission sends **two** emails: the internal notification and an
+automated acknowledgment to the inquirer. The acknowledgment is
+best-effort — if only it fails (visible in Resend → Emails / Vercel
+logs), submissions still succeed and the team still gets the inquiry.
+Note this doubles email volume against Resend's quota (free tier:
+100/day).
+
 ### Rotating keys
 
 - **Resend**: create the new API key first, swap the env var in Vercel,
