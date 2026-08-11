@@ -17,6 +17,11 @@ the live setup, how to redeploy, and the operational runbook.
 | Resend sending domain | Resend → Domains | `ace-engineering.co`, DNS-verified |
 | Turnstile widget | Cloudflare → Turnstile | Managed mode, site's domains listed |
 
+The domain's DNS is hosted at **GoDaddy**: the apex `A` record and the
+`www` CNAME point at Vercel, and the same zone carries the Microsoft 365
+mail records (MX, SPF, DKIM CNAMEs) and Resend's records (`send` MX/TXT,
+`resend._domainkey` TXT) — leave those in place when editing DNS.
+
 `CONTACT_FROM_EMAIL` is optional (defaults to
 `ACE Engineering <noreply@ace-engineering.co>`). `NEXT_PUBLIC_SITE_URL`
 is **not needed on Vercel** — the canonical URL is derived from the
@@ -48,7 +53,7 @@ Production** (instant, no rebuild).
 
 ### The contact form shows the error message
 
-The form's fallback message includes the direct email, so enquiries are
+The form's fallback message includes the direct email, so inquiries are
 never fully lost. Diagnose in order:
 
 1. **Vercel → project → Logs**, filter `/api/contact`. The route logs
@@ -64,7 +69,7 @@ never fully lost. Diagnose in order:
    Removing both Turnstile env vars + redeploying disables the check
    entirely if Cloudflare is the problem.
 
-### Enquiries aren't arriving in the inbox
+### Inquiries aren't arriving in the inbox
 
 1. Resend dashboard → Emails: was the send accepted/delivered?
 2. Check the recipient's spam folder; the sending domain's DNS records

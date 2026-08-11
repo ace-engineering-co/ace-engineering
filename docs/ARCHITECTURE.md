@@ -110,7 +110,7 @@ lib/contact-email.ts   – HTML + text template (all input HTML-escaped)
 lib/email-logo.ts      – logo PNG as base64, attached inline (cid)
 ```
 
-The email's Reply-To is the enquirer's address, so the team replies
+The email's Reply-To is the inquirer's address, so the team replies
 directly from their inbox.
 
 `PhoneField.tsx` exists purely for performance: react-phone-number-input

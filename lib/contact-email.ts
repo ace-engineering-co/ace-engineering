@@ -42,7 +42,7 @@ export function renderContactEmail(d: ContactSubmission): {
   html: string;
   text: string;
 } {
-  const subject = `Enquiry — ${d.company} (${d.sector})`;
+  const subject = `Inquiry — ${d.company} (${d.sector})`;
 
   const html = `<!doctype html>
 <html>
@@ -58,7 +58,7 @@ export function renderContactEmail(d: ContactSubmission): {
           </tr>
           <tr>
             <td style="border-top:3px solid ${ACCENT};padding:30px 32px 8px;">
-              <p style="margin:0;font:600 11px/1.4 'Courier New',monospace;letter-spacing:2px;text-transform:uppercase;color:${ACCENT};">Website enquiry</p>
+              <p style="margin:0;font:600 11px/1.4 'Courier New',monospace;letter-spacing:2px;text-transform:uppercase;color:${ACCENT};">Website inquiry</p>
               <h1 style="margin:10px 0 4px;font:700 24px/1.2 Arial,Helvetica,sans-serif;color:${NAVY};">New consultation request</h1>
               <p style="margin:0 0 18px;font:400 13px/1.5 Arial,Helvetica,sans-serif;color:${MUTED};">Submitted through the ace-engineering.co contact form.</p>
             </td>
@@ -85,7 +85,7 @@ export function renderContactEmail(d: ContactSubmission): {
           </tr>
           <tr>
             <td style="background:${NAVY};padding:16px 32px;">
-              <p style="margin:0;font:400 11px/1.6 Arial,Helvetica,sans-serif;color:#8FA1BC;">ACE Engineering — Integrated Infrastructure Solutions<br/>Reply directly to this email to respond to the enquirer.</p>
+              <p style="margin:0;font:400 11px/1.6 Arial,Helvetica,sans-serif;color:#8FA1BC;">ACE Engineering — Integrated Infrastructure Solutions<br/>Reply directly to this email to respond to the inquirer.</p>
             </td>
           </tr>
         </table>
@@ -110,7 +110,7 @@ export function renderContactEmail(d: ContactSubmission): {
     "Requirement:",
     d.message,
     "",
-    "Reply directly to this email to respond to the enquirer."
+    "Reply directly to this email to respond to the inquirer."
   ].join("\n");
 
   return { subject, html, text };

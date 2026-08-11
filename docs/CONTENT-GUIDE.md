@@ -16,13 +16,13 @@ Deploys are automatic on push to the production branch (see
 
 The single file for every contact detail. Change a value here and it
 updates everywhere it appears (nav, contact section, footer, WhatsApp
-buttons, enquiry emails).
+buttons, inquiry emails).
 
 | Field | Shown where | Notes |
 |---|---|---|
 | `whatsapp` | WhatsApp buttons | Digits only, international format, no `+` |
 | `whatsappMessage` | Pre-filled WhatsApp text | — |
-| `email` | Contact section + enquiry recipient | Enquiries are delivered here |
+| `email` | Contact section + inquiry recipient | Inquiries are delivered here |
 | `affiliateEmail` | Affiliate section links | May equal `email` |
 | `phone` / `phoneHref` | Contact section | Keep the two in sync |
 | `addressLines` | Contact section "Office" | Each array entry renders as one line |
@@ -82,7 +82,7 @@ node -e "require('sharp')('new.jpg').webp({quality:80}).toFile('public/img/targe
 - `app/icon.png` — favicon (1024×1024).
 - `public/og-image.png` — social-share card (1200×630). Replace it if
   branding changes; keep the exact dimensions.
-- `lib/email-logo.ts` — the logo inside enquiry emails, embedded as
+- `lib/email-logo.ts` — the logo inside inquiry emails, embedded as
   base64 PNG. Regenerate after a logo change:
 
 ```bash

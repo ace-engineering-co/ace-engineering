@@ -89,7 +89,7 @@ const REQUIRED: (keyof Form)[] = ["name", "company", "email", "phone", "sector",
 /**
  * Consultation form + contact details. Client-validated per field (errors
  * appear on blur or submit), then POSTs JSON to /api/contact which delivers
- * the enquiry by email. Spam control: honeypot + lazily-mounted Cloudflare
+ * the inquiry by email. Spam control: honeypot + lazily-mounted Cloudflare
  * Turnstile. On success the form is replaced by a confirmation panel; on
  * failure an inline message offers the direct email address.
  */
@@ -280,7 +280,7 @@ export default function Contact() {
                   <path d="M4 12.5l5 5L20 6.5" />
                 </svg>
               </span>
-              <h3 className="display mt-6 text-3xl text-deep">Enquiry received.</h3>
+              <h3 className="display mt-6 text-3xl text-deep">Inquiry received.</h3>
               <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate">
                 Thank you — your consultation request has been sent to our team.
                 We will get back to you shortly.
@@ -391,7 +391,7 @@ export default function Contact() {
             </button>
             {status === "error" && (
               <p role="alert" className="mt-4 text-center text-sm text-red-500">
-                Something went wrong sending your enquiry. Please try again, or
+                Something went wrong sending your inquiry. Please try again, or
                 email us directly at{" "}
                 <a href={`mailto:${site.email}`} className="underline">
                   {site.email}

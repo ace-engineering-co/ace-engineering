@@ -25,7 +25,7 @@ const steps = [
   }
 ];
 
-/** Compact corporate partner band — routes to email and the enquiry form. */
+/** Compact corporate partner band — routes to email and the inquiry form. */
 export default function Affiliate() {
   return (
     <section id="affiliate" className="relative z-10 -mt-10 overflow-hidden rounded-t-[2.5rem] bg-navy py-20 lg:py-24">
@@ -86,7 +86,7 @@ export default function Affiliate() {
               href="#contact"
               className="border-b border-amp/50 text-amp transition-colors hover:border-amp"
             >
-              submit an enquiry below
+              submit an inquiry below
             </a>
             .
           </p>

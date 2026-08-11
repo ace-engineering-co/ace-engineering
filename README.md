@@ -4,7 +4,7 @@ Single-page marketing site for **ACE Engineering**, an integrated
 infrastructure solutions company (power generation, electrical
 infrastructure, packaged solutions, offshore assets and project
 development). The site presents the company's solutions, sectors, process
-and affiliate programme, and delivers consultation enquiries by email.
+and affiliate programme, and delivers consultation inquiries by email.
 
 ## Documentation
 
@@ -57,7 +57,7 @@ npm run typecheck  # TypeScript, no emit
 | Variable | Required | Purpose |
 |---|---|---|
 | `RESEND_API_KEY` | Yes, for the contact form | API key from [Resend](https://resend.com) (Dashboard → API Keys) |
-| `CONTACT_FROM_EMAIL` | No | Sender for enquiry emails. Defaults to `ACE Engineering <noreply@ace-engineering.co>`. Must belong to a domain verified in Resend. |
+| `CONTACT_FROM_EMAIL` | No | Sender for inquiry emails. Defaults to `ACE Engineering <noreply@ace-engineering.co>`. Must belong to a domain verified in Resend. |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Recommended | Cloudflare Turnstile site key — enables bot protection on the form. Build-time variable: redeploy after setting it. |
 | `TURNSTILE_SECRET_KEY` | Recommended | Cloudflare Turnstile secret key — its server-side pair. |
 | `NEXT_PUBLIC_SITE_URL` | Only off-Vercel | Canonical site origin (e.g. `https://www.ace-engineering.co`) used for metadata, sitemap, robots and structured data. On Vercel it is derived automatically from the production domain. |
@@ -72,8 +72,8 @@ breaks.
 1. Create a Resend account and verify the sending domain
    (Dashboard → Domains → add the DNS records Resend provides).
 2. Create an API key and set `RESEND_API_KEY` in your hosting platform.
-3. Enquiries are delivered to the address in `lib/site.config.ts`
-   (`site.email`), with Reply-To set to the enquirer.
+3. Inquiries are delivered to the address in `lib/site.config.ts`
+   (`site.email`), with Reply-To set to the inquirer.
 
 The API route (`app/api/contact/route.ts`) validates all input
 server-side, caps field lengths, and silently drops bot submissions via a
@@ -229,7 +229,7 @@ app/
 components/         One component per page section (see table above)
 lib/
   site.config.ts    All contact details — edit here
-  contact-email.ts  Enquiry email template (HTML + text)
+  contact-email.ts  Inquiry email template (HTML + text)
   email-logo.ts     Inline email logo (base64 PNG)
 public/
   brand/            Logo SVGs

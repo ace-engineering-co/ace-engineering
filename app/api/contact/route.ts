@@ -15,7 +15,7 @@ import { EMAIL_LOGO_PNG_BASE64 } from "../../../lib/email-logo";
  *  - NEXT_PUBLIC_TURNSTILE_SITE_KEY (optional) — its client-side pair
  *
  * The recipient is site.email (lib/site.config.ts). Reply-To is set to the
- * enquirer so the team can respond directly from their inbox.
+ * inquirer so the team can respond directly from their inbox.
  */
 
 const FROM_DEFAULT = "ACE Engineering <noreply@ace-engineering.co>";
@@ -120,11 +120,11 @@ export async function POST(req: Request) {
     });
     if (error) {
       console.error("Resend error:", error);
-      return NextResponse.json({ error: "The enquiry could not be sent." }, { status: 502 });
+      return NextResponse.json({ error: "The inquiry could not be sent." }, { status: 502 });
     }
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Contact form send failed:", err);
-    return NextResponse.json({ error: "The enquiry could not be sent." }, { status: 502 });
+    return NextResponse.json({ error: "The inquiry could not be sent." }, { status: 502 });
   }
 }
